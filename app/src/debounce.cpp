@@ -1,4 +1,5 @@
 #include "Arduino.h"
+#include "debounce.h"
 
 void updateButton(unsigned int *buttonHistory, int pin) {
   *buttonHistory = *buttonHistory << 1;
@@ -8,7 +9,7 @@ void updateButton(unsigned int *buttonHistory, int pin) {
 bool isButtonPressed(unsigned int *buttonHistory) {
   bool pressed = false;
 
-  if ((*buttonHistory & 0b11000111) == 0b00000111) {
+  if ((*buttonHistory & DEBOUNCE_MASK) == 0b00000111) {
     pressed = true;
     *buttonHistory = 0b11111111;
   }
@@ -16,3 +17,21 @@ bool isButtonPressed(unsigned int *buttonHistory) {
   return pressed;
 }
 
+bool isButtonRelease(unsigned int *buttonHistory) {
+  bool released = false;
+
+  if ((*buttonHistory & DEBOUNCE_MASK) == 0b11000000) {
+    released = true;
+    *buttonHistory = 0b00000000;
+  }
+
+  return released;
+}
+
+bool isButtonDown(unsigned int *buttonHistory) {
+  return (*buttonHistory == 0b11111111);
+}
+
+bool isButtonUp(unsigned int *buttonHistory) {
+  return (*buttonHistory == 0b00000000);
+}

@@ -1,7 +1,8 @@
 #include "Arduino.h"
 #include "debounce.h"
 
-#define PIN_IN_SIGNAL 1
+// INPUT SIGNALS
+#define PIN_IN_DETECTOR_SIGNAL 0
 /*
  * no need to define a reset input just bring RESET to low by closing with GND
  * RESET pin has an internal pullup resistor remember to add hardware debounce like below
@@ -10,29 +11,48 @@
  * https://hackaday.com/2015/12/09/embed-with-elliot-debounce-your-noisy-buttons-part-i/
  *
 */
+#define PIN_IN_PI_PWR_DEMAND_PRINTER 1
+#define PIN_IN_PI_PWR_DEMAND_FAN 2
+#define PIN_IN_FAN_SW 3
+//#define PIN_IN_RESET_SW 4
 
-// constants
-#define PIN_OUT_RELAY 2
-#define PIN_OUT_PI_SIGNAL 3
-#define PIN_OUT_PIEZO_PIN 4
-#define PIN_OUT_LED_POWER 5
-#define PIN_OUT_LED_ALERT 6
+// OUTPUT SIGNALS
+// #define PIN_OUT_PIEZO_PIN 5
+// piezo can be combined with Alert
+#define PIN_OUT_LED_POWER 6
+#define PIN_OUT_LED_ALERT 7
+
+// this can piggy back off the fan relay pin
+// #define PIN_OUT_LED_FAN 8
+
+#define PIN_RELAY_PRINTER 9
+#define PIN_RELAY_FAN 10
+#define PIN_OUT_PI_TRIGGERED 11
 
 #define FLASH_INTERVAL 500
 #define STARTUP_INTERVAL 4000
-#define PIEZO_TEST_INTERVAL 3000
 #define INPUT_SCAN_INTERVAL 10
 // globals
 bool startingUp = false;
 bool firstCheck = true;
 bool alertFlashState = false;
-bool piezoTested = false;
-bool triggered = false;
+bool detectorTriggered = false;
+
+bool piPrinterPwrDemand = false;
+bool previousPiPrinterPwrDemand = false;
+bool previousFanPwrOn = false;
+bool fanPowerOn = false;
+bool fanSwitchOverride = false;
+bool previousPiFanPwrDemand = false;
+
 
 unsigned long previousFlashMillis = 0;
 unsigned long previousInputScanMillis = 0;
 
-unsigned int inputHistory = 0;
+unsigned int inputDetectorHistory = 0;
+unsigned int inputFanSwitch = 0;
+unsigned int inputPiPwrDemandPrinter = 0;
+unsigned int inputPiPwrDemandFan = 0;
 // function prototypes
 void setupOutputPin(int pinNumber, int initialState = LOW);
 
@@ -42,12 +62,17 @@ void setupOutputPin(int pinNumber, int initialState) {
 }
 
 void setup() {
-  pinMode(PIN_IN_SIGNAL, INPUT);
-  setupOutputPin(PIN_OUT_RELAY, HIGH);
-  setupOutputPin(PIN_OUT_PI_SIGNAL);
-  setupOutputPin(PIN_OUT_PIEZO_PIN);
+  pinMode(PIN_IN_DETECTOR_SIGNAL, INPUT);
+  pinMode(PIN_IN_PI_PWR_DEMAND_PRINTER, INPUT);
+  pinMode(PIN_IN_PI_PWR_DEMAND_FAN, INPUT);
+  pinMode(PIN_IN_FAN_SW, INPUT);
+
   setupOutputPin(PIN_OUT_LED_POWER, HIGH);
   setupOutputPin(PIN_OUT_LED_ALERT);
+  // setupOutputPin(PIN_OUT_LED_FAN);
+  setupOutputPin(PIN_RELAY_PRINTER);
+  setupOutputPin(PIN_RELAY_FAN);
+  setupOutputPin(PIN_OUT_PI_TRIGGERED);
 }
 
 void loop() {
@@ -60,35 +85,69 @@ void loop() {
       digitalWrite(PIN_OUT_LED_ALERT, alertFlashState);
       previousFlashMillis = currentMillis;
     }
-    // test piezo
-    if (currentMillis >= PIEZO_TEST_INTERVAL && !piezoTested) {
-      digitalWrite(PIN_OUT_PIEZO_PIN, HIGH);
-      piezoTested = true;
-    }
     return;
   }
 
-  if (triggered) {
+  if (detectorTriggered) {
     return;
   }
 
   if (firstCheck) {
     // turn off alert light and piezo
-    digitalWrite(PIN_OUT_PIEZO_PIN, LOW);
+    // digitalWrite(PIN_OUT_PIEZO_PIN, LOW);
     digitalWrite(PIN_OUT_LED_ALERT, LOW);
     firstCheck = false;
   }
 
   if ((unsigned long)(currentMillis - previousInputScanMillis) >= (int)INPUT_SCAN_INTERVAL) {
-    updateButton(&inputHistory, PIN_IN_SIGNAL);
+    updateButton(&inputDetectorHistory, PIN_IN_DETECTOR_SIGNAL);
+    updateButton(&inputFanSwitch, PIN_IN_FAN_SW);
+    updateButton(&inputPiPwrDemandFan, PIN_IN_PI_PWR_DEMAND_FAN);
+    updateButton(&inputPiPwrDemandPrinter, PIN_IN_PI_PWR_DEMAND_PRINTER);
     previousInputScanMillis = currentMillis;
   }
 
-  if (isButtonPressed(&inputHistory)) {
-    digitalWrite(PIN_OUT_RELAY, LOW);
-    digitalWrite(PIN_OUT_PI_SIGNAL, HIGH);
-    digitalWrite(PIN_OUT_PIEZO_PIN, HIGH);
+  if (isButtonPressed(&inputDetectorHistory)) {
+    digitalWrite(PIN_RELAY_PRINTER, LOW);
+    digitalWrite(PIN_OUT_PI_TRIGGERED, HIGH);
+    // digitalWrite(PIN_OUT_PIEZO_PIN, HIGH);
     digitalWrite(PIN_OUT_LED_ALERT, HIGH);
-    triggered = true;
+    detectorTriggered = true;
+  }
+
+  bool piPrinterPwrDemand = isButtonDown(&inputPiPwrDemandPrinter);
+
+  if (piPrinterPwrDemand != previousPiPrinterPwrDemand) {
+    digitalWrite(PIN_RELAY_PRINTER, previousPiPrinterPwrDemand ? HIGH : LOW);
+    previousPiPrinterPwrDemand = piPrinterPwrDemand;
+  }
+  /*
+  Fan logic:
+    - store last pi fan pwr demand
+    - if the button is pressed:
+      - flip the fan state
+      - ignore the pi until it flips demand state
+      - keep processing button presses
+  */
+  if (isButtonRelease(&inputFanSwitch)){
+    fanSwitchOverride = true;
+    fanPowerOn = !fanPowerOn;
+  }
+
+  bool piFanPwrDemand = isButtonDown(&inputPiPwrDemandFan);
+
+  if (!fanSwitchOverride) {
+    fanPowerOn = piFanPwrDemand;
+    previousPiFanPwrDemand = piFanPwrDemand;
+  } else {
+    if (piFanPwrDemand != previousPiFanPwrDemand) {
+      fanSwitchOverride = false;
+      fanPowerOn = piFanPwrDemand;
+    }
+  }
+
+  if (fanPowerOn != previousFanPwrOn) {
+    digitalWrite(PIN_RELAY_PRINTER, fanPowerOn ? HIGH: LOW);
+    previousFanPwrOn = fanPowerOn;
   }
 }
