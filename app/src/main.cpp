@@ -143,6 +143,7 @@ void loop() {
     if (piFanPwrDemand != previousPiFanPwrDemand) {
       fanSwitchOverride = false;
       fanPowerOn = piFanPwrDemand;
+      previousPiFanPwrDemand = piFanPwrDemand;
     }
   }
 
