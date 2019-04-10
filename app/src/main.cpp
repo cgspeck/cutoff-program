@@ -17,17 +17,19 @@
 //#define PIN_IN_RESET_SW 4
 
 // OUTPUT SIGNALS
+// piezo can be combined with alert led tranistor
 // #define PIN_OUT_PIEZO_PIN 5
-// piezo can be combined with Alert
-#define PIN_OUT_LED_POWER 6
-#define PIN_OUT_LED_ALERT 7
+// printer power led  can be combined with power relay
+// #define PIN_OUT_LED_POWER 6
+// combines led, piezo, pi notification
+#define PIN_OUT_ALERT 7
 
 // this can piggy back off the fan relay pin
 // #define PIN_OUT_LED_FAN 8
 
 #define PIN_RELAY_PRINTER 9
 #define PIN_RELAY_FAN 10
-#define PIN_OUT_PI_TRIGGERED 11
+// #define PIN_OUT_PI_TRIGGERED 11
 
 #define FLASH_INTERVAL 500
 #define STARTUP_INTERVAL 4000
@@ -67,12 +69,13 @@ void setup() {
   pinMode(PIN_IN_PI_PWR_DEMAND_FAN, INPUT);
   pinMode(PIN_IN_FAN_SW, INPUT);
 
-  setupOutputPin(PIN_OUT_LED_POWER, HIGH);
-  setupOutputPin(PIN_OUT_LED_ALERT);
+  // setupOutputPin(PIN_OUT_LED_POWER, HIGH);
+  // combines led, piezo, pi notification
+  setupOutputPin(PIN_OUT_ALERT);
   // setupOutputPin(PIN_OUT_LED_FAN);
   setupOutputPin(PIN_RELAY_PRINTER);
   setupOutputPin(PIN_RELAY_FAN);
-  setupOutputPin(PIN_OUT_PI_TRIGGERED);
+  // setupOutputPin(PIN_OUT_PI_TRIGGERED);
 }
 
 void loop() {
@@ -82,7 +85,8 @@ void loop() {
     // flash the alert light
     if ((unsigned long)(currentMillis - previousFlashMillis) >= (int)FLASH_INTERVAL) {
       alertFlashState = !alertFlashState;
-      digitalWrite(PIN_OUT_LED_ALERT, alertFlashState);
+      // combines led, piezo, pi notification
+      digitalWrite(PIN_OUT_ALERT, alertFlashState);
       previousFlashMillis = currentMillis;
     }
     return;
@@ -95,7 +99,8 @@ void loop() {
   if (firstCheck) {
     // turn off alert light and piezo
     // digitalWrite(PIN_OUT_PIEZO_PIN, LOW);
-    digitalWrite(PIN_OUT_LED_ALERT, LOW);
+    // combines led, piezo, pi notification
+    digitalWrite(PIN_OUT_ALERT, LOW);
     firstCheck = false;
   }
 
@@ -109,9 +114,10 @@ void loop() {
 
   if (isButtonPressed(&inputDetectorHistory)) {
     digitalWrite(PIN_RELAY_PRINTER, LOW);
-    digitalWrite(PIN_OUT_PI_TRIGGERED, HIGH);
+    // digitalWrite(PIN_OUT_PI_TRIGGERED, HIGH);
     // digitalWrite(PIN_OUT_PIEZO_PIN, HIGH);
-    digitalWrite(PIN_OUT_LED_ALERT, HIGH);
+    // combines led, piezo, pi notification
+    digitalWrite(PIN_OUT_ALERT, HIGH);
     detectorTriggered = true;
   }
 
