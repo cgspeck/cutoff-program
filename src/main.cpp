@@ -30,9 +30,9 @@
 #define STARTUP_INTERVAL 4000
 #define INPUT_SCAN_INTERVAL 10
 
-#define HELLO_WORLD_REPORT_INTERVAL 1000
+#define SERIAL_REPORT_INTERVAL 1000
 // globals
-bool startingUp = false;
+bool startingUp = true;
 bool firstCheck = true;
 bool alertFlashState = false;
 bool detectorTriggered = false;
@@ -48,7 +48,7 @@ bool previousPiFanPwrDemand = false;
 unsigned long previousFlashMillis = 0;
 unsigned long previousInputScanMillis = 0;
 
-unsigned long previousHelloWorldMillis = 0;
+unsigned long previousSerialReportMillis = 0;
 
 unsigned int inputDetectorHistory = 0;
 unsigned int inputFanSwitch = 0;
@@ -77,6 +77,29 @@ void setup() {
   Serial.begin(9600);
 }
 
+void doSerialReport(unsigned long currentMillis) {
+  if((unsigned long)(currentMillis - previousSerialReportMillis) >= SERIAL_REPORT_INTERVAL) {
+    Serial.print("Time:");
+    Serial.println(currentMillis);
+
+    String statusMsg = ((startingUp) ? "Starting Up" : (
+      (detectorTriggered) ? "Detector triggered" :
+        "Idle"
+    ));
+
+    Serial.print("Status:");
+    Serial.println(statusMsg);
+
+    Serial.print("Printer power on:");
+    Serial.println(previousPiPrinterPwrDemand);
+
+    Serial.print("Fan power on:");
+    Serial.println(previousFanPwrOn);
+
+    previousSerialReportMillis = currentMillis;
+  }
+}
+
 void loop() {
   unsigned long currentMillis = millis();
 
@@ -93,17 +116,12 @@ void loop() {
       }
     }
 
-    Serial.println("Starting up");
+    doSerialReport(currentMillis);
     return;
   }
 
-  if((unsigned long)(currentMillis - previousHelloWorldMillis) >= HELLO_WORLD_REPORT_INTERVAL) {
-    Serial.println("Hello world");
-    Serial.println(currentMillis);
-    previousHelloWorldMillis = currentMillis;
-  }
-
   if (detectorTriggered) {
+    doSerialReport(currentMillis);
     return;
   }
 
@@ -163,4 +181,6 @@ void loop() {
     digitalWrite(PIN_RELAY_PRINTER, fanPowerOn ? HIGH: LOW);
     previousFanPwrOn = fanPowerOn;
   }
+
+  doSerialReport(currentMillis);
 }
