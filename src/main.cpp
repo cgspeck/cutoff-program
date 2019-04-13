@@ -1,8 +1,9 @@
 #include <Arduino.h>
+
 #include "debounce.h"
 
 // INPUT SIGNALS
-#define PIN_IN_DETECTOR_SIGNAL 0
+#define PIN_IN_DETECTOR_SIGNAL 2
 /*
  * no need to define a reset input just bring RESET to low by closing with GND
  * RESET pin has an internal pullup resistor remember to add hardware debounce like below
@@ -11,29 +12,25 @@
  * https://hackaday.com/2015/12/09/embed-with-elliot-debounce-your-noisy-buttons-part-i/
  *
 */
-#define PIN_IN_PI_PWR_DEMAND_PRINTER 1
-#define PIN_IN_PI_PWR_DEMAND_FAN 2
-#define PIN_IN_FAN_SW 3
-//#define PIN_IN_RESET_SW 4
+#define PIN_IN_PI_PWR_DEMAND_PRINTER 3
+#define PIN_IN_PI_PWR_DEMAND_FAN 4
+#define PIN_IN_FAN_SW 5
 
 // OUTPUT SIGNALS
-// piezo can be combined with alert led tranistor
-// #define PIN_OUT_PIEZO_PIN 5
+// buzzer can be combined with alert led transistor
 // printer power led  can be combined with power relay
-// #define PIN_OUT_LED_POWER 6
-// combines led, piezo, pi notification
-#define PIN_OUT_ALERT 7
+// combines led, buzzer, pi notification
+#define PIN_OUT_ALERT 6
 
-// this can piggy back off the fan relay pin
-// #define PIN_OUT_LED_FAN 8
-
-#define PIN_RELAY_PRINTER 9
-#define PIN_RELAY_FAN 10
-// #define PIN_OUT_PI_TRIGGERED 11
+// printer power status led can piggy back off the fan relay pin
+#define PIN_RELAY_PRINTER 7
+#define PIN_RELAY_FAN 8
 
 #define FLASH_INTERVAL 500
 #define STARTUP_INTERVAL 4000
 #define INPUT_SCAN_INTERVAL 10
+
+#define HELLO_WORLD_REPORT_INTERVAL 1000
 // globals
 bool startingUp = false;
 bool firstCheck = true;
@@ -50,6 +47,8 @@ bool previousPiFanPwrDemand = false;
 
 unsigned long previousFlashMillis = 0;
 unsigned long previousInputScanMillis = 0;
+
+unsigned long previousHelloWorldMillis = 0;
 
 unsigned int inputDetectorHistory = 0;
 unsigned int inputFanSwitch = 0;
@@ -69,13 +68,13 @@ void setup() {
   pinMode(PIN_IN_PI_PWR_DEMAND_FAN, INPUT);
   pinMode(PIN_IN_FAN_SW, INPUT);
 
-  // setupOutputPin(PIN_OUT_LED_POWER, HIGH);
-  // combines led, piezo, pi notification
+  // combines led, buzzer, pi notification
   setupOutputPin(PIN_OUT_ALERT);
-  // setupOutputPin(PIN_OUT_LED_FAN);
+
   setupOutputPin(PIN_RELAY_PRINTER);
   setupOutputPin(PIN_RELAY_FAN);
-  // setupOutputPin(PIN_OUT_PI_TRIGGERED);
+
+  Serial.begin(9600);
 }
 
 void loop() {
@@ -85,11 +84,23 @@ void loop() {
     // flash the alert light
     if ((unsigned long)(currentMillis - previousFlashMillis) >= (int)FLASH_INTERVAL) {
       alertFlashState = !alertFlashState;
-      // combines led, piezo, pi notification
+      // combines led, buzzer, pi notification
       digitalWrite(PIN_OUT_ALERT, alertFlashState);
       previousFlashMillis = currentMillis;
+
+      if (currentMillis >= 2000) {
+        startingUp = false;
+      }
     }
+
+    Serial.println("Starting up");
     return;
+  }
+
+  if((unsigned long)(currentMillis - previousHelloWorldMillis) >= HELLO_WORLD_REPORT_INTERVAL) {
+    Serial.println("Hello world");
+    Serial.println(currentMillis);
+    previousHelloWorldMillis = currentMillis;
   }
 
   if (detectorTriggered) {
@@ -97,9 +108,7 @@ void loop() {
   }
 
   if (firstCheck) {
-    // turn off alert light and piezo
-    // digitalWrite(PIN_OUT_PIEZO_PIN, LOW);
-    // combines led, piezo, pi notification
+    // combines led, buzzer, pi notification
     digitalWrite(PIN_OUT_ALERT, LOW);
     firstCheck = false;
   }
@@ -114,9 +123,6 @@ void loop() {
 
   if (isButtonPressed(&inputDetectorHistory)) {
     digitalWrite(PIN_RELAY_PRINTER, LOW);
-    // digitalWrite(PIN_OUT_PI_TRIGGERED, HIGH);
-    // digitalWrite(PIN_OUT_PIEZO_PIN, HIGH);
-    // combines led, piezo, pi notification
     digitalWrite(PIN_OUT_ALERT, HIGH);
     detectorTriggered = true;
   }
