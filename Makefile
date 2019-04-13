@@ -2,9 +2,12 @@ build:
 	$(MAKE) -C src/
 
 clean:
-	$(MAKE) -C src/
+	$(MAKE) -C src/ clean
+
+help:
+	$(MAKE) -C src/ help
 
 upload:
-	$(MAKE) -C src/
+	$(MAKE) -C src/ upload
 
-.PHONY: build clean upload
+.PHONY: build clean help upload
