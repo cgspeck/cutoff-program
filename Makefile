@@ -21,6 +21,12 @@ monitor:
 reset:
 	$(MAKE) -C src/ reset
 
+show_boards:
+	$(MAKE) -C src/ show_boards
+
+show_submenu:
+	$(MAKE) -C src/ show_submenu
+
 upload:
 	$(MAKE) -C src/ upload
 

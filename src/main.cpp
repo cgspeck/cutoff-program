@@ -14,7 +14,6 @@
 */
 #define PIN_IN_PI_PWR_DEMAND_PRINTER 3
 #define PIN_IN_PI_PWR_DEMAND_FAN 4
-#define PIN_IN_FAN_SW 5
 
 // OUTPUT SIGNALS
 // buzzer can be combined with alert led transistor
@@ -37,36 +36,31 @@ bool firstCheck = true;
 bool alertFlashState = false;
 bool detectorTriggered = false;
 
-bool piPrinterPwrDemand = false;
 bool previousPiPrinterPwrDemand = false;
-bool previousFanPwrOn = false;
-bool fanPowerOn = false;
-bool fanSwitchOverride = false;
 bool previousPiFanPwrDemand = false;
-
 
 unsigned long previousFlashMillis = 0;
 unsigned long previousInputScanMillis = 0;
-
 unsigned long previousSerialReportMillis = 0;
 
 unsigned int inputDetectorHistory = 0;
-unsigned int inputFanSwitch = 0;
+
 unsigned int inputPiPwrDemandPrinter = 0;
 unsigned int inputPiPwrDemandFan = 0;
 // function prototypes
 void setupOutputPin(int pinNumber, int initialState = LOW);
 
 // functions
-void setupOutputPin(int pinNumber, int initialState) {
+void setupOutputPin(int pinNumber, int initialState)
+{
   pinMode(pinNumber, initialState);
 }
 
-void setup() {
+void setup()
+{
   pinMode(PIN_IN_DETECTOR_SIGNAL, INPUT);
   pinMode(PIN_IN_PI_PWR_DEMAND_PRINTER, INPUT);
   pinMode(PIN_IN_PI_PWR_DEMAND_FAN, INPUT);
-  pinMode(PIN_IN_FAN_SW, INPUT);
 
   // combines led, buzzer, pi notification
   setupOutputPin(PIN_OUT_ALERT);
@@ -77,15 +71,14 @@ void setup() {
   Serial.begin(9600);
 }
 
-void doSerialReport(unsigned long currentMillis) {
-  if((unsigned long)(currentMillis - previousSerialReportMillis) >= SERIAL_REPORT_INTERVAL) {
+void doSerialReport(unsigned long currentMillis)
+{
+  if ((unsigned long)(currentMillis - previousSerialReportMillis) >= SERIAL_REPORT_INTERVAL)
+  {
     Serial.print("Time:");
     Serial.println(currentMillis);
 
-    String statusMsg = ((startingUp) ? "Starting Up" : (
-      (detectorTriggered) ? "Detector triggered" :
-        "Idle"
-    ));
+    String statusMsg = ((startingUp) ? "Starting Up" : ((detectorTriggered) ? "Detector triggered" : "Idle"));
 
     Serial.print("Status:");
     Serial.println(statusMsg);
@@ -94,24 +87,28 @@ void doSerialReport(unsigned long currentMillis) {
     Serial.println(previousPiPrinterPwrDemand);
 
     Serial.print("Fan power on:");
-    Serial.println(previousFanPwrOn);
+    Serial.println(previousPiFanPwrDemand);
 
     previousSerialReportMillis = currentMillis;
   }
 }
 
-void loop() {
+void loop()
+{
   unsigned long currentMillis = millis();
 
-  if (startingUp) {
+  if (startingUp)
+  {
     // flash the alert light
-    if ((unsigned long)(currentMillis - previousFlashMillis) >= (int)FLASH_INTERVAL) {
+    if ((unsigned long)(currentMillis - previousFlashMillis) >= (int)FLASH_INTERVAL)
+    {
       alertFlashState = !alertFlashState;
       // combines led, buzzer, pi notification
       digitalWrite(PIN_OUT_ALERT, alertFlashState);
       previousFlashMillis = currentMillis;
 
-      if (currentMillis >= 2000) {
+      if (currentMillis >= STARTUP_INTERVAL)
+      {
         startingUp = false;
       }
     }
@@ -120,66 +117,48 @@ void loop() {
     return;
   }
 
-  if (detectorTriggered) {
+  if (detectorTriggered)
+  {
     doSerialReport(currentMillis);
     return;
   }
 
-  if (firstCheck) {
+  if (firstCheck)
+  {
     // combines led, buzzer, pi notification
     digitalWrite(PIN_OUT_ALERT, LOW);
     firstCheck = false;
   }
 
-  if ((unsigned long)(currentMillis - previousInputScanMillis) >= (int)INPUT_SCAN_INTERVAL) {
+  if ((unsigned long)(currentMillis - previousInputScanMillis) >= (int)INPUT_SCAN_INTERVAL)
+  {
     updateButton(&inputDetectorHistory, PIN_IN_DETECTOR_SIGNAL);
-    updateButton(&inputFanSwitch, PIN_IN_FAN_SW);
     updateButton(&inputPiPwrDemandFan, PIN_IN_PI_PWR_DEMAND_FAN);
     updateButton(&inputPiPwrDemandPrinter, PIN_IN_PI_PWR_DEMAND_PRINTER);
     previousInputScanMillis = currentMillis;
   }
 
-  if (isButtonPressed(&inputDetectorHistory)) {
+  if (isButtonPressed(&inputDetectorHistory))
+  {
     digitalWrite(PIN_RELAY_PRINTER, LOW);
     digitalWrite(PIN_OUT_ALERT, HIGH);
     detectorTriggered = true;
+    return;
   }
 
   bool piPrinterPwrDemand = isButtonDown(&inputPiPwrDemandPrinter);
 
-  if (piPrinterPwrDemand != previousPiPrinterPwrDemand) {
-    digitalWrite(PIN_RELAY_PRINTER, previousPiPrinterPwrDemand ? HIGH : LOW);
+  if (piPrinterPwrDemand != previousPiPrinterPwrDemand)
+  {
     previousPiPrinterPwrDemand = piPrinterPwrDemand;
-  }
-  /*
-  Fan logic:
-    - store last pi fan pwr demand
-    - if the button is pressed:
-      - flip the fan state
-      - ignore the pi until it flips demand state
-      - keep processing button presses
-  */
-  if (isButtonRelease(&inputFanSwitch)){
-    fanSwitchOverride = true;
-    fanPowerOn = !fanPowerOn;
+    digitalWrite(PIN_RELAY_PRINTER, previousPiPrinterPwrDemand ? HIGH : LOW);
   }
 
   bool piFanPwrDemand = isButtonDown(&inputPiPwrDemandFan);
-
-  if (!fanSwitchOverride) {
-    fanPowerOn = piFanPwrDemand;
+  if (piFanPwrDemand != previousPiFanPwrDemand)
+  {
     previousPiFanPwrDemand = piFanPwrDemand;
-  } else {
-    if (piFanPwrDemand != previousPiFanPwrDemand) {
-      fanSwitchOverride = false;
-      fanPowerOn = piFanPwrDemand;
-      previousPiFanPwrDemand = piFanPwrDemand;
-    }
-  }
-
-  if (fanPowerOn != previousFanPwrOn) {
-    digitalWrite(PIN_RELAY_PRINTER, fanPowerOn ? HIGH: LOW);
-    previousFanPwrOn = fanPowerOn;
+    digitalWrite(PIN_RELAY_PRINTER, previousPiFanPwrDemand ? HIGH : LOW);
   }
 
   doSerialReport(currentMillis);
