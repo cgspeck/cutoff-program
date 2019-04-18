@@ -1,3 +1,9 @@
+export ARDUINO_DIR ?= /usr/share/arduino
+export ARDMK_DIR ?= /usr/share/arduino
+export AVR_TOOLS_DIR ?= /usr
+export AVRDUDE ?= /usr/bin/avrdude
+export AVRDUDE_CONF ?= /etc/avrdude.conf
+
 all: clean build upload monitor
 
 build:
