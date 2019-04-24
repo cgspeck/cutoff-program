@@ -15,6 +15,15 @@
 #define PIN_IN_PI_PWR_DEMAND_PRINTER 3
 #define PIN_IN_PI_PWR_DEMAND_FAN 4
 
+/*
+
+The pushbutton has to be pressed to turn the softswitch on, to prevent things from
+starting up automatically following disconnetion and reconnection of mains.
+
+The pushbutton can be repurposed as a reset button if the detector is triggered.
+*/
+#define PIN_IN_PUSHBUTTON 5
+
 // OUTPUT SIGNALS
 // buzzer can be combined with alert led transistor
 // printer power led  can be combined with power relay
@@ -35,6 +44,7 @@ bool startingUp = true;
 bool firstCheck = true;
 bool alertFlashState = false;
 bool detectorTriggered = false;
+bool softSwitchActivated = false;
 
 bool previousPiPrinterPwrDemand = false;
 bool previousPiFanPwrDemand = false;
@@ -47,6 +57,7 @@ unsigned int inputDetectorHistory = 0;
 
 unsigned int inputPiPwrDemandPrinter = 0;
 unsigned int inputPiPwrDemandFan = 0;
+unsigned int inputPushButtonHistory = 0;
 // function prototypes
 void setupOutputPin(int pinNumber, int initialState = LOW);
 
@@ -61,6 +72,7 @@ void setup()
   pinMode(PIN_IN_DETECTOR_SIGNAL, INPUT);
   pinMode(PIN_IN_PI_PWR_DEMAND_PRINTER, INPUT);
   pinMode(PIN_IN_PI_PWR_DEMAND_FAN, INPUT);
+  pinMode(PIN_IN_PUSHBUTTON, INPUT);
 
   // combines led, buzzer, pi notification
   setupOutputPin(PIN_OUT_ALERT);
@@ -82,6 +94,9 @@ void doSerialReport(unsigned long currentMillis)
 
     Serial.print("Status:");
     Serial.println(statusMsg);
+
+    Serial.print("Activated:");
+    Serial.println(softSwitchActivated);
 
     Serial.print("Printer power on:");
     Serial.println(previousPiPrinterPwrDemand);
@@ -135,7 +150,16 @@ void loop()
     updateButton(&inputDetectorHistory, PIN_IN_DETECTOR_SIGNAL);
     updateButton(&inputPiPwrDemandFan, PIN_IN_PI_PWR_DEMAND_FAN);
     updateButton(&inputPiPwrDemandPrinter, PIN_IN_PI_PWR_DEMAND_PRINTER);
+    updateButton(&inputPushButtonHistory, PIN_IN_PUSHBUTTON);
     previousInputScanMillis = currentMillis;
+  }
+
+  if (!softSwitchActivated) {
+    if (isButtonRelease(&inputPushButtonHistory)) {
+      softSwitchActivated = true;
+    } else {
+      return;
+    }
   }
 
   if (isButtonUp(&inputDetectorHistory))
