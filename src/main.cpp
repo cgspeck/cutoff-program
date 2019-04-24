@@ -138,7 +138,7 @@ void loop()
     previousInputScanMillis = currentMillis;
   }
 
-  if (isButtonPressed(&inputDetectorHistory))
+  if (isButtonUp(&inputDetectorHistory))
   {
     digitalWrite(PIN_RELAY_PRINTER, LOW);
     digitalWrite(PIN_OUT_ALERT, HIGH);

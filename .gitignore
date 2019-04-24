@@ -1,5 +1,3 @@
 .envrc
-app/.pioenvs
-app/.piolibdeps
 .vscode/ipch
 bin/
