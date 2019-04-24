@@ -158,6 +158,7 @@ void loop()
     if (isButtonRelease(&inputPushButtonHistory)) {
       softSwitchActivated = true;
     } else {
+      doSerialReport(currentMillis);
       return;
     }
   }
@@ -167,6 +168,7 @@ void loop()
     digitalWrite(PIN_RELAY_PRINTER, LOW);
     digitalWrite(PIN_OUT_ALERT, HIGH);
     detectorTriggered = true;
+    doSerialReport(currentMillis);
     return;
   }
 
