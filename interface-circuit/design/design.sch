@@ -35,23 +35,12 @@ F 3 "https://www.raspberrypi.org/documentation/hardware/raspberrypi/schematics/r
 	1    2300 5050
 	1    0    0    -1  
 $EndComp
-$Comp
-L Connector:Screw_Terminal_01x04 J?
-U 1 1 5CC178C2
-P 4500 6050
-F 0 "J?" H 4580 6042 50  0000 L CNN
-F 1 "Screw_Terminal_01x04" H 4580 5951 50  0000 L CNN
-F 2 "" H 4500 6050 50  0001 C CNN
-F 3 "~" H 4500 6050 50  0001 C CNN
-	1    4500 6050
-	1    0    0    -1  
-$EndComp
 Text Label 1500 5350 2    50   ~ 0
-PiPrinterPowerDemand
+LV_PrinterPowerDemand
 Text Label 1500 5450 2    50   ~ 0
-ArduinoPrinterPowerStatus
+LV_PrinterPowerStatus
 Text Label 1500 5550 2    50   ~ 0
-ArduinoAlarmTriggered
+LV_AlarmTriggered
 $Comp
 L power:GND #PWR?
 U 1 1 5CC20F99
@@ -99,21 +88,428 @@ NoConn ~ 2300 6350
 NoConn ~ 2400 6350
 NoConn ~ 2500 6350
 NoConn ~ 2600 6350
+Text Label 4650 3800 0    50   ~ 0
+LV_PrinterPowerDemand
+Text Label 4650 3500 1    50   ~ 0
+LV_PrinterPowerStatus
+Text Label 4650 3600 0    50   ~ 0
+LV_AlarmTriggered
+$Comp
+L Connector_Generic:Conn_02x06_Counter_Clockwise J?
+U 1 1 5CC54B85
+P 6600 3450
+F 0 "J?" H 6650 3867 50  0000 C CNN
+F 1 "Conn_02x06_Counter_Clockwise" H 6650 3776 50  0000 C CNN
+F 2 "" H 6600 3450 50  0001 C CNN
+F 3 "~" H 6600 3450 50  0001 C CNN
+	1    6600 3450
+	1    0    0    -1  
+$EndComp
+Wire Wire Line
+	4650 3800 5550 3800
+Wire Wire Line
+	5550 3800 5550 3250
+Wire Wire Line
+	5550 3250 6400 3250
+Wire Wire Line
+	4650 3500 4650 3350
+Wire Wire Line
+	4650 3350 6400 3350
+Wire Wire Line
+	4650 3600 5800 3600
+Wire Wire Line
+	5800 3600 5800 3650
+Wire Wire Line
+	5800 3650 6400 3650
 $Comp
 L power:GND #PWR?
-U 1 1 5CC273C6
-P 4300 6150
-F 0 "#PWR?" H 4300 5900 50  0001 C CNN
-F 1 "GND" V 4305 6022 50  0000 R CNN
-F 2 "" H 4300 6150 50  0001 C CNN
-F 3 "" H 4300 6150 50  0001 C CNN
-	1    4300 6150
+U 1 1 5CC5D690
+P 4650 3700
+F 0 "#PWR?" H 4650 3450 50  0001 C CNN
+F 1 "GND" V 4655 3572 50  0000 R CNN
+F 2 "" H 4650 3700 50  0001 C CNN
+F 3 "" H 4650 3700 50  0001 C CNN
+	1    4650 3700
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5CC5E02F
+P 6400 3550
+F 0 "#PWR?" H 6400 3300 50  0001 C CNN
+F 1 "GND" V 6405 3422 50  0000 R CNN
+F 2 "" H 6400 3550 50  0001 C CNN
+F 3 "" H 6400 3550 50  0001 C CNN
+	1    6400 3550
 	0    1    1    0   
 $EndComp
-Text Label 4300 5950 2    50   ~ 0
-PiPrinterPowerDemand
-Text Label 4300 6050 2    50   ~ 0
-ArduinoPrinterPowerStatus
-Text Label 4300 6250 2    50   ~ 0
-ArduinoAlarmTriggered
+$Comp
+L power:+3V3 #PWR?
+U 1 1 5CC5E9D5
+P 6400 3450
+F 0 "#PWR?" H 6400 3300 50  0001 C CNN
+F 1 "+3V3" V 6415 3578 50  0000 L CNN
+F 2 "" H 6400 3450 50  0001 C CNN
+F 3 "" H 6400 3450 50  0001 C CNN
+	1    6400 3450
+	0    -1   -1   0   
+$EndComp
+Text Label 3550 1900 2    50   ~ 0
+HV_PrinterPowerDemand
+Text Label 4450 1600 0    50   ~ 0
+LV_PrinterPowerStatus
+Text Label 4450 1750 0    50   ~ 0
+LV_AlarmTriggered
+$Comp
+L power:+5V #PWR?
+U 1 1 5CC629AA
+P 3950 1350
+F 0 "#PWR?" H 3950 1200 50  0001 C CNN
+F 1 "+5V" H 3965 1523 50  0000 C CNN
+F 2 "" H 3950 1350 50  0001 C CNN
+F 3 "" H 3950 1350 50  0001 C CNN
+	1    3950 1350
+	1    0    0    -1  
+$EndComp
+$Comp
+L custom_symbols:LogicLevelConverter_BOB-08745 U?
+U 1 1 5CC30C4F
+P 4000 1850
+F 0 "U?" H 4000 2650 50  0000 C CNN
+F 1 "LogicLevelConverter_BOB-08745" H 4000 2756 50  0000 C CNN
+F 2 "" H 3350 2600 50  0001 C CNN
+F 3 "" H 3350 2600 50  0001 C CNN
+	1    4000 1850
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:+3V3 #PWR?
+U 1 1 5CC6AF02
+P 4100 1350
+F 0 "#PWR?" H 4100 1200 50  0001 C CNN
+F 1 "+3V3" H 4115 1523 50  0000 C CNN
+F 2 "" H 4100 1350 50  0001 C CNN
+F 3 "" H 4100 1350 50  0001 C CNN
+	1    4100 1350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5CC6BA8E
+P 3950 2350
+F 0 "#PWR?" H 3950 2100 50  0001 C CNN
+F 1 "GND" H 3955 2177 50  0000 C CNN
+F 2 "" H 3950 2350 50  0001 C CNN
+F 3 "" H 3950 2350 50  0001 C CNN
+	1    3950 2350
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5CC6BF5B
+P 4100 2350
+F 0 "#PWR?" H 4100 2100 50  0001 C CNN
+F 1 "GND" H 4105 2177 50  0000 C CNN
+F 2 "" H 4100 2350 50  0001 C CNN
+F 3 "" H 4100 2350 50  0001 C CNN
+	1    4100 2350
+	1    0    0    -1  
+$EndComp
+Text Label 3550 1600 2    50   ~ 0
+HV_PrinterPowerStatus
+Text Label 3550 1750 2    50   ~ 0
+HV_AlarmTriggered
+Text Label 4450 1900 0    50   ~ 0
+LV_PrinterPowerDemand
+NoConn ~ 3550 2050
+NoConn ~ 4450 2050
+$Comp
+L power:GND #PWR?
+U 1 1 5CC7797E
+P 6900 3550
+F 0 "#PWR?" H 6900 3300 50  0001 C CNN
+F 1 "GND" V 6905 3422 50  0000 R CNN
+F 2 "" H 6900 3550 50  0001 C CNN
+F 3 "" H 6900 3550 50  0001 C CNN
+	1    6900 3550
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5CC78107
+P 6900 3450
+F 0 "#PWR?" H 6900 3300 50  0001 C CNN
+F 1 "+5V" V 6915 3578 50  0000 L CNN
+F 2 "" H 6900 3450 50  0001 C CNN
+F 3 "" H 6900 3450 50  0001 C CNN
+	1    6900 3450
+	0    1    1    0   
+$EndComp
+Text Label 6900 3250 0    50   ~ 0
+HV_PrinterPowerDemand
+Text Label 6900 3350 0    50   ~ 0
+HV_PrinterPowerStatus
+Text Label 6900 3650 0    50   ~ 0
+HV_AlarmTriggered
+$Comp
+L Connector_Generic:Conn_02x15_Counter_Clockwise J?
+U 1 1 5CC801D0
+P 6600 1650
+F 0 "J?" H 6650 2567 50  0000 C CNN
+F 1 "Conn_02x15_Counter_Clockwise" H 6650 2476 50  0000 C CNN
+F 2 "" H 6600 1650 50  0001 C CNN
+F 3 "~" H 6600 1650 50  0001 C CNN
+	1    6600 1650
+	1    0    0    -1  
+$EndComp
+NoConn ~ 6400 950 
+$Comp
+L power:+3V3 #PWR?
+U 1 1 5CC8346E
+P 6400 1050
+F 0 "#PWR?" H 6400 900 50  0001 C CNN
+F 1 "+3V3" V 6415 1178 50  0000 L CNN
+F 2 "" H 6400 1050 50  0001 C CNN
+F 3 "" H 6400 1050 50  0001 C CNN
+	1    6400 1050
+	0    -1   -1   0   
+$EndComp
+NoConn ~ 6400 1150
+NoConn ~ 6900 2350
+$Comp
+L power:GND #PWR?
+U 1 1 5CC875EB
+P 6900 2050
+F 0 "#PWR?" H 6900 1800 50  0001 C CNN
+F 1 "GND" V 6905 1922 50  0000 R CNN
+F 2 "" H 6900 2050 50  0001 C CNN
+F 3 "" H 6900 2050 50  0001 C CNN
+	1    6900 2050
+	0    -1   -1   0   
+$EndComp
+NoConn ~ 6900 2250
+$Comp
+L Connector:Conn_01x02_Male J?
+U 1 1 5CC880D1
+P 10500 2250
+F 0 "J?" H 10472 2132 50  0000 R CNN
+F 1 "Conn_01x02_Male" H 10472 2223 50  0000 R CNN
+F 2 "" H 10500 2250 50  0001 C CNN
+F 3 "~" H 10500 2250 50  0001 C CNN
+	1    10500 2250
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5CC8A0D8
+P 10300 2250
+F 0 "#PWR?" H 10300 2000 50  0001 C CNN
+F 1 "GND" V 10305 2122 50  0000 R CNN
+F 2 "" H 10300 2250 50  0001 C CNN
+F 3 "" H 10300 2250 50  0001 C CNN
+	1    10300 2250
+	0    1    1    0   
+$EndComp
+Text Label 10300 2150 1    50   ~ 0
+RESET
+Text Label 10500 800  2    50   ~ 0
+RESET
+$Comp
+L power:GND #PWR?
+U 1 1 5CC93EB0
+P 10900 800
+F 0 "#PWR?" H 10900 550 50  0001 C CNN
+F 1 "GND" V 10905 672 50  0000 R CNN
+F 2 "" H 10900 800 50  0001 C CNN
+F 3 "" H 10900 800 50  0001 C CNN
+	1    10900 800 
+	0    -1   -1   0   
+$EndComp
+$Comp
+L Switch:SW_SPST SW?
+U 1 1 5CC93548
+P 10700 800
+F 0 "SW?" H 10700 1035 50  0000 C CNN
+F 1 "SW_SPST" H 10700 944 50  0000 C CNN
+F 2 "" H 10700 800 50  0001 C CNN
+F 3 "~" H 10700 800 50  0001 C CNN
+	1    10700 800 
+	1    0    0    -1  
+$EndComp
+$Comp
+L Connector:Screw_Terminal_01x05 J?
+U 1 1 5CC995BB
+P 5400 2500
+F 0 "J?" H 5480 2542 50  0000 L CNN
+F 1 "Screw_Terminal_01x05" H 5480 2451 50  0000 L CNN
+F 2 "" H 5400 2500 50  0001 C CNN
+F 3 "~" H 5400 2500 50  0001 C CNN
+	1    5400 2500
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:+12V #PWR?
+U 1 1 5CC9A229
+P 5600 2700
+F 0 "#PWR?" H 5600 2550 50  0001 C CNN
+F 1 "+12V" V 5615 2828 50  0000 L CNN
+F 2 "" H 5600 2700 50  0001 C CNN
+F 3 "" H 5600 2700 50  0001 C CNN
+	1    5600 2700
+	0    1    1    0   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5CC9AB9C
+P 5600 2600
+F 0 "#PWR?" H 5600 2350 50  0001 C CNN
+F 1 "GND" V 5605 2472 50  0000 R CNN
+F 2 "" H 5600 2600 50  0001 C CNN
+F 3 "" H 5600 2600 50  0001 C CNN
+	1    5600 2600
+	0    -1   -1   0   
+$EndComp
+$Comp
+L power:+5V #PWR?
+U 1 1 5CC9B73F
+P 5600 2500
+F 0 "#PWR?" H 5600 2350 50  0001 C CNN
+F 1 "+5V" V 5615 2628 50  0000 L CNN
+F 2 "" H 5600 2500 50  0001 C CNN
+F 3 "" H 5600 2500 50  0001 C CNN
+	1    5600 2500
+	0    1    1    0   
+$EndComp
+NoConn ~ 6400 2350
+NoConn ~ 6400 2250
+NoConn ~ 6400 2150
+$Comp
+L power:+5V #PWR?
+U 1 1 5CCACAFF
+P 6400 2050
+F 0 "#PWR?" H 6400 1900 50  0001 C CNN
+F 1 "+5V" V 6415 2178 50  0000 L CNN
+F 2 "" H 6400 2050 50  0001 C CNN
+F 3 "" H 6400 2050 50  0001 C CNN
+	1    6400 2050
+	0    -1   -1   0   
+$EndComp
+NoConn ~ 5400 300 
+NoConn ~ 6400 1950
+NoConn ~ 6400 1850
+NoConn ~ 6400 1750
+NoConn ~ 6400 1650
+NoConn ~ 6400 1550
+NoConn ~ 6400 1450
+NoConn ~ 6400 1350
+NoConn ~ 6400 1250
+NoConn ~ 5600 2400
+Wire Wire Line
+	5600 2300 5950 2300
+Wire Wire Line
+	5950 2300 5950 2600
+Wire Wire Line
+	5950 2600 7200 2600
+Wire Wire Line
+	7200 2600 7200 1950
+Wire Wire Line
+	7200 1950 6900 1950
+Wire Wire Line
+	6900 3250 7850 3250
+Wire Wire Line
+	7850 3250 7850 2500
+Wire Wire Line
+	7850 2500 7250 2500
+Wire Wire Line
+	7250 2500 7250 1850
+Wire Wire Line
+	7250 1850 6900 1850
+$Comp
+L Connector:Screw_Terminal_01x05 J?
+U 1 1 5CCD28E2
+P 4450 3700
+F 0 "J?" H 4368 3275 50  0000 C CNN
+F 1 "Screw_Terminal_01x05" H 4368 3366 50  0000 C CNN
+F 2 "" H 4450 3700 50  0001 C CNN
+F 3 "~" H 4450 3700 50  0001 C CNN
+	1    4450 3700
+	-1   0    0    1   
+$EndComp
+Wire Wire Line
+	4650 3900 5650 3900
+Wire Wire Line
+	5650 3900 5650 3750
+Wire Wire Line
+	5650 3750 6400 3750
+Text Label 4650 3900 0    50   ~ 0
+LV_FanPowerDemand
+Text Label 6900 3750 0    50   ~ 0
+HV_FanPowerDemand
+Wire Wire Line
+	6900 3750 7900 3750
+Wire Wire Line
+	7900 3750 7900 2450
+Wire Wire Line
+	7900 2450 7300 2450
+Wire Wire Line
+	7300 2450 7300 1750
+Wire Wire Line
+	7300 1750 6900 1750
+Wire Wire Line
+	6900 2150 10300 2150
+NoConn ~ 11500 2050
+NoConn ~ 6900 950 
+NoConn ~ 6900 1050
+NoConn ~ 6900 1150
+NoConn ~ 6900 1250
+$Comp
+L Connector:Conn_01x02_Male J?
+U 1 1 5CCE850B
+P 10500 1750
+F 0 "J?" H 10472 1632 50  0000 R CNN
+F 1 "Conn_01x02_Male" H 10472 1723 50  0000 R CNN
+F 2 "" H 10500 1750 50  0001 C CNN
+F 3 "~" H 10500 1750 50  0001 C CNN
+	1    10500 1750
+	-1   0    0    1   
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5CCE9BE9
+P 10300 1750
+F 0 "#PWR?" H 10300 1500 50  0001 C CNN
+F 1 "GND" V 10305 1622 50  0000 R CNN
+F 2 "" H 10300 1750 50  0001 C CNN
+F 3 "" H 10300 1750 50  0001 C CNN
+	1    10300 1750
+	0    1    1    0   
+$EndComp
+Wire Wire Line
+	6900 1650 10300 1650
+Text Label 10300 1650 2    50   ~ 0
+SOFT_SWITCH
+$Comp
+L Switch:SW_SPST SW?
+U 1 1 5CCFC122
+P 10700 1150
+F 0 "SW?" H 10700 1385 50  0000 C CNN
+F 1 "SW_SPST" H 10700 1294 50  0000 C CNN
+F 2 "" H 10700 1150 50  0001 C CNN
+F 3 "~" H 10700 1150 50  0001 C CNN
+	1    10700 1150
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5CCFCAEC
+P 10900 1150
+F 0 "#PWR?" H 10900 900 50  0001 C CNN
+F 1 "GND" V 10905 1022 50  0000 R CNN
+F 2 "" H 10900 1150 50  0001 C CNN
+F 3 "" H 10900 1150 50  0001 C CNN
+	1    10900 1150
+	0    -1   -1   0   
+$EndComp
+Text Label 10500 1150 2    50   ~ 0
+SOFT_SWITCH
 $EndSCHEMATC
