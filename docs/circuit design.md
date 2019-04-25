@@ -22,7 +22,7 @@ Select following pins/ports:
 * 8 OUTPUT: relay for fan
 * GND: protoboard ground net
 * 3v3: to logic level shifter LV side
-* 5v: 
+* 5v:
   * to logic level shifter HV side
   * to detector common line
 
@@ -37,18 +37,23 @@ Select following pins/ports:
 
 References:
 https://forum.arduino.cc/index.php?topic=381795.0
-https://www.sparkfun.com/products/retired/8745
+https://www.sparkfun.com/prloducts/retired/8745
 https://www.jaycar.com.au/arduino-compatible-logic-level-converter-module/p/XC4486
 https://www.jaycar.com.au/medias/sys_master/images/9229265928222/XC4486-manualMain.jpg
 
 
 Connections see below
 
-# Pushbutton
+# Momentary Pushbutton (green, softbutton)
 
 Connect via header strip
-10k pulldown resistor between 5 and GND
-switch between 5 and 5v
+activate internal pull up resistor
+switch between 5 and GND
+
+# Momentary Pushbutton (red, reset)
+
+Connect via header strip
+switch between GND & RST
 
 # Detector
 

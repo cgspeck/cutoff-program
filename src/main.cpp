@@ -72,7 +72,7 @@ void setup()
   pinMode(PIN_IN_DETECTOR_SIGNAL, INPUT);
   pinMode(PIN_IN_PI_PWR_DEMAND_PRINTER, INPUT);
   pinMode(PIN_IN_PI_PWR_DEMAND_FAN, INPUT);
-  pinMode(PIN_IN_PUSHBUTTON, INPUT);
+  pinMode(PIN_IN_PUSHBUTTON, INPUT_PULLUP);
 
   // combines led, buzzer, pi notification
   setupOutputPin(PIN_OUT_ALERT);
@@ -155,7 +155,8 @@ void loop()
   }
 
   if (!softSwitchActivated) {
-    if (isButtonRelease(&inputPushButtonHistory)) {
+    // pulled up, so goes low when pressed, high when released
+    if (isButtonPressed(&inputPushButtonHistory)) {
       softSwitchActivated = true;
     } else {
       doSerialReport(currentMillis);
