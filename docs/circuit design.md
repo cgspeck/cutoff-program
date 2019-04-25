@@ -81,7 +81,7 @@ Select 560R between digital output and Base
 Collector connected to Relay
 Emitter to ground
 Diode in reverse between Relay poles (negative band towards +12VDC)
-Select IN4007 diodes
+Select 1N4007 diodes
 Relay attached via screw terminals
 Logic shifter connected between digital out & resistor
 
