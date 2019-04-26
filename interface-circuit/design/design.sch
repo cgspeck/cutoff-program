@@ -95,19 +95,7 @@ LV_PrinterPowerStatus
 Text Label 4650 3600 0    50   ~ 0
 LV_AlarmTriggered
 Wire Wire Line
-	4650 3800 5550 3800
-Wire Wire Line
-	5550 3800 5550 3250
-Wire Wire Line
-	5550 3250 6400 3250
-Wire Wire Line
 	4650 3500 4650 3350
-Wire Wire Line
-	4650 3350 6400 3350
-Wire Wire Line
-	4650 3600 5800 3600
-Wire Wire Line
-	5800 3600 5800 3650
 $Comp
 L power:GND #PWR013
 U 1 1 5CC5D690
@@ -186,10 +174,6 @@ Text Label 3550 1750 2    50   ~ 0
 HV_AlarmTriggered
 Text Label 4450 1900 0    50   ~ 0
 LV_PrinterPowerDemand
-Text Label 6900 3250 0    50   ~ 0
-HV_PrinterPowerDemand
-Text Label 6900 3350 0    50   ~ 0
-HV_PrinterPowerStatus
 $Comp
 L Connector:Conn_01x02_Male J12
 U 1 1 5CC880D1
@@ -284,26 +268,6 @@ F 3 "" H 5600 2500 50  0001 C CNN
 $EndComp
 NoConn ~ 5400 300 
 NoConn ~ 5600 2400
-Wire Wire Line
-	5600 2300 5950 2300
-Wire Wire Line
-	5950 2300 5950 2600
-Wire Wire Line
-	5950 2600 7200 2600
-Wire Wire Line
-	7200 2600 7200 1950
-Wire Wire Line
-	7200 1950 6900 1950
-Wire Wire Line
-	6900 3250 7850 3250
-Wire Wire Line
-	7850 3250 7850 2500
-Wire Wire Line
-	7850 2500 7250 2500
-Wire Wire Line
-	7250 2500 7250 1850
-Wire Wire Line
-	7250 1850 6900 1850
 $Comp
 L Connector:Screw_Terminal_01x05 J2
 U 1 1 5CCD28E2
@@ -315,20 +279,8 @@ F 3 "~" H 4450 3700 50  0001 C CNN
 	1    4450 3700
 	-1   0    0    1   
 $EndComp
-Wire Wire Line
-	4650 3900 5650 3900
-Wire Wire Line
-	5650 3900 5650 3750
 Text Label 4650 3900 0    50   ~ 0
 LV_FanPowerDemand
-Wire Wire Line
-	7900 2450 7300 2450
-Wire Wire Line
-	7300 2450 7300 1750
-Wire Wire Line
-	7300 1750 6900 1750
-Wire Wire Line
-	6900 2150 10300 2150
 NoConn ~ 11500 2050
 $Comp
 L Connector:Conn_01x02_Male J11
@@ -352,8 +304,6 @@ F 3 "" H 10300 1750 50  0001 C CNN
 	1    10300 1750
 	0    1    1    0   
 $EndComp
-Wire Wire Line
-	6900 1650 10300 1650
 Text Label 10300 1650 2    50   ~ 0
 SOFT_SWITCH
 $Comp
@@ -380,12 +330,6 @@ F 3 "" H 1600 7400 50  0001 C CNN
 $EndComp
 Text Label 1200 7400 2    50   ~ 0
 SOFT_SWITCH
-Wire Wire Line
-	7950 2400 7350 2400
-Wire Wire Line
-	7350 2400 7350 1550
-Wire Wire Line
-	7350 1550 6900 1550
 $Comp
 L Device:R R2
 U 1 1 5CD28673
@@ -397,7 +341,6 @@ F 3 "~" H 7500 1550 50  0001 C CNN
 	1    7500 1550
 	0    1    1    0   
 $EndComp
-Connection ~ 7350 1550
 $Comp
 L dk_Transistors-Bipolar-BJT-Single:2N3904-AP Q1
 U 1 1 5CD2B56C
@@ -928,26 +871,12 @@ F 3 "~" H 3500 7400 50  0001 C CNN
 	1    3500 7400
 	0    -1   -1   0   
 $EndComp
-Wire Wire Line
-	7950 3650 7950 2400
-Wire Wire Line
-	6900 3650 7950 3650
-Wire Wire Line
-	7900 3750 7900 2450
-Wire Wire Line
-	6900 3750 7900 3750
-Text Label 6900 3750 0    50   ~ 0
-HV_FanPowerDemand
-Wire Wire Line
-	5650 3750 6400 3750
-Text Label 6900 3650 0    50   ~ 0
-HV_AlarmTriggered
-Wire Wire Line
-	5800 3650 6400 3650
 Text Label 1500 5650 2    50   ~ 0
 LV_FanPowerDemand
 Text Label 4450 2050 0    50   ~ 0
 LV_FanPowerDemand
 Text Label 3550 2050 2    50   ~ 0
 HV_FanPowerDemand
+Text Label 7350 1550 2    50   ~ 0
+HV_AlarmTriggered
 $EndSCHEMATC
