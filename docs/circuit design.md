@@ -36,8 +36,9 @@ Select following pins/ports:
 # Logic level shifter
 
 References:
+https://www.sparkfun.com/products/retired/11978
 https://forum.arduino.cc/index.php?topic=381795.0
-https://www.sparkfun.com/prloducts/retired/8745
+https://www.sparkfun.com/products/retired/8745
 https://www.jaycar.com.au/arduino-compatible-logic-level-converter-module/p/XC4486
 https://www.jaycar.com.au/medias/sys_master/images/9229265928222/XC4486-manualMain.jpg
 
