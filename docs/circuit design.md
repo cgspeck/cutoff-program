@@ -108,3 +108,8 @@ https://www.jaycar.com.au/chrome-bezel-with-5mm-red-led/p/SL2610
 2V, 15mA
 Select 220R resistor inline with LED (drop voltage to 1.7v, limit to 15mA)
 Connect via header strip
+
+# Relays
+
+https://www.digikey.com.au/product-detail/en/te-connectivity-potter-brumfield-relays/T9AP1D52-12/T9AP1D52-12-ND/287569
+https://www.te.com/commerce/DocumentDelivery/DDEController?Action=srchrtrv&DocNm=1308242_T9A&DocType=DS&DocLang=English
