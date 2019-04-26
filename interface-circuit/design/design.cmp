@@ -1,0 +1,187 @@
+Cmp-Mod V01 Created by PcbNew   date = Fri 26 Apr 2019 16:35:42 AEST
+
+BeginCmp
+TimeStamp = 5CC327CB
+Path = /5CCD28E2
+Reference = J2;
+ValeurCmp = Screw_Term_RPi;
+IdModule  = digikey-footprints:Term_Block_1x5_P5.08mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 5CC35131
+Path = /5CC995BB
+Reference = J3;
+ValeurCmp = Screw_Term_Detector;
+IdModule  = digikey-footprints:Term_Block_1x5_P5.08mm;
+EndCmp
+
+BeginCmp
+TimeStamp = 5CC32758
+Path = /5CC13554
+Reference = A1;
+ValeurCmp = Arduino_Nano_v3.x;
+IdModule  = Module:Arduino_Nano;
+EndCmp
+
+BeginCmp
+TimeStamp = 5CC32777
+Path = /5CC2A3E2
+Reference = D1;
+ValeurCmp = 1N4007;
+IdModule  = Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal;
+EndCmp
+
+BeginCmp
+TimeStamp = 5CC3322B
+Path = /5CC5CF0D
+Reference = D2;
+ValeurCmp = 1N4007;
+IdModule  = Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal;
+EndCmp
+
+BeginCmp
+TimeStamp = 5CC327B5
+Path = /5CC73F3E
+Reference = D3;
+ValeurCmp = 1N4007;
+IdModule  = Diode_THT:D_DO-41_SOD81_P10.16mm_Horizontal;
+EndCmp
+
+BeginCmp
+TimeStamp = 5CC327F5
+Path = /5CCF3969
+Reference = J4;
+ValeurCmp = 12V_IN;
+IdModule  = Connectors:SCREWTERMINAL-5MM-2;
+EndCmp
+
+BeginCmp
+TimeStamp = 5CC35917
+Path = /5CC3E12C
+Reference = J5;
+ValeurCmp = Conn_Pwr_LED;
+IdModule  = Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical;
+EndCmp
+
+BeginCmp
+TimeStamp = 5CC32821
+Path = /5CC2C13B
+Reference = J6;
+ValeurCmp = Conn_Piezo;
+IdModule  = Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical;
+EndCmp
+
+BeginCmp
+TimeStamp = 5CC32838
+Path = /5CCAE331
+Reference = J7;
+ValeurCmp = Conn_Printer_Mode;
+IdModule  = Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical;
+EndCmp
+
+BeginCmp
+TimeStamp = 5CC3284F
+Path = /5CCBFC14
+Reference = J8;
+ValeurCmp = Conn_Fan_Mode;
+IdModule  = Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical;
+EndCmp
+
+BeginCmp
+TimeStamp = 5CC32863
+Path = /5CC6A5CF
+Reference = J9;
+ValeurCmp = PRINTER_RELAY;
+IdModule  = Connectors:SCREWTERMINAL-5MM-2;
+EndCmp
+
+BeginCmp
+TimeStamp = 5CC32877
+Path = /5CC73F57
+Reference = J10;
+ValeurCmp = FAN_RELAY;
+IdModule  = Connectors:SCREWTERMINAL-5MM-2;
+EndCmp
+
+BeginCmp
+TimeStamp = 5CC349D4
+Path = /5CCE850B
+Reference = J11;
+ValeurCmp = Conn_Switch;
+IdModule  = Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical;
+EndCmp
+
+BeginCmp
+TimeStamp = 5CC328A3
+Path = /5CC880D1
+Reference = J12;
+ValeurCmp = Conn_Reset;
+IdModule  = Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical;
+EndCmp
+
+BeginCmp
+TimeStamp = 5CC328B9
+Path = /5CD2B56C
+Reference = Q1;
+ValeurCmp = 2N3904-AP;
+IdModule  = digikey-footprints:TO-92-3_Formed_Leads;
+EndCmp
+
+BeginCmp
+TimeStamp = 5CC328CF
+Path = /5CC5BF58
+Reference = Q2;
+ValeurCmp = 2N3904-AP;
+IdModule  = digikey-footprints:TO-92-3_Formed_Leads;
+EndCmp
+
+BeginCmp
+TimeStamp = 5CC328E5
+Path = /5CC73F34
+Reference = Q3;
+ValeurCmp = 2N3904-AP;
+IdModule  = digikey-footprints:TO-92-3_Formed_Leads;
+EndCmp
+
+BeginCmp
+TimeStamp = 5CC328FC
+Path = /5CC3D025
+Reference = R1;
+ValeurCmp = 220R;
+IdModule  = Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal;
+EndCmp
+
+BeginCmp
+TimeStamp = 5CC32913
+Path = /5CD28673
+Reference = R2;
+ValeurCmp = 560R;
+IdModule  = Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal;
+EndCmp
+
+BeginCmp
+TimeStamp = 5CC3292A
+Path = /5CC5B18E
+Reference = R3;
+ValeurCmp = 560R;
+IdModule  = Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal;
+EndCmp
+
+BeginCmp
+TimeStamp = 5CC3371F
+Path = /5CC73F21
+Reference = R4;
+ValeurCmp = 560R;
+IdModule  = Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal;
+EndCmp
+
+BeginCmp
+TimeStamp = 5CC34379
+Path = /5CC30C4F
+Reference = U1;
+ValeurCmp = LogicLevelConverter_BOB-08745;
+IdModule  = custom-footprints:LOGIC_LEVEL_CONVERTER_BOB-8745;
+EndCmp
+
+EndListe

@@ -90,12 +90,10 @@ NoConn ~ 2500 6350
 NoConn ~ 2600 6350
 Text Label 4650 3800 0    50   ~ 0
 LV_PrinterPowerDemand
-Text Label 4650 3500 1    50   ~ 0
-LV_PrinterPowerStatus
-Text Label 4650 3600 0    50   ~ 0
+Text Label 4650 3500 0    50   ~ 0
 LV_AlarmTriggered
-Wire Wire Line
-	4650 3500 4650 3350
+Text Label 4650 3600 0    50   ~ 0
+LV_FanPowerDemand
 $Comp
 L power:GND #PWR013
 U 1 1 5CC5D690
@@ -108,11 +106,11 @@ F 3 "" H 4650 3700 50  0001 C CNN
 	0    -1   -1   0   
 $EndComp
 Text Label 3550 1900 2    50   ~ 0
-HV_PrinterPowerDemand
+SW_PRINTER_RELAY
 Text Label 4450 1600 0    50   ~ 0
-LV_PrinterPowerStatus
+HV_PrinterPowerDemand
 Text Label 4450 1750 0    50   ~ 0
-LV_AlarmTriggered
+HV_FanPowerDemand
 $Comp
 L power:+5V #PWR07
 U 1 1 5CC629AA
@@ -169,17 +167,17 @@ F 3 "" H 4100 2350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Label 3550 1600 2    50   ~ 0
-HV_PrinterPowerStatus
+LV_FanPowerDemand
 Text Label 3550 1750 2    50   ~ 0
-HV_AlarmTriggered
+LV_FanPowerDemand
 Text Label 4450 1900 0    50   ~ 0
-LV_PrinterPowerDemand
+LV_PrinterPowerStatus
 $Comp
 L Connector:Conn_01x02_Male J12
 U 1 1 5CC880D1
 P 10500 2250
 F 0 "J12" H 10472 2132 50  0000 R CNN
-F 1 "Conn_01x02_Male" H 10472 2223 50  0000 R CNN
+F 1 "Conn_Reset" H 10472 2223 50  0000 R CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 10500 2250 50  0001 C CNN
 F 3 "~" H 10500 2250 50  0001 C CNN
 	1    10500 2250
@@ -203,8 +201,8 @@ L Connector:Screw_Terminal_01x05 J3
 U 1 1 5CC995BB
 P 5400 2500
 F 0 "J3" H 5480 2542 50  0000 L CNN
-F 1 "Screw_Terminal_01x05" H 5480 2451 50  0000 L CNN
-F 2 "Connectors:SCREWTERMINAL-3.5MM-5" H 5400 2500 50  0001 C CNN
+F 1 "Screw_Term_Detector" H 5480 2451 50  0000 L CNN
+F 2 "digikey-footprints:Term_Block_1x5_P5.08mm" H 5400 2500 50  0001 C CNN
 F 3 "~" H 5400 2500 50  0001 C CNN
 	1    5400 2500
 	-1   0    0    1   
@@ -249,21 +247,21 @@ L Connector:Screw_Terminal_01x05 J2
 U 1 1 5CCD28E2
 P 4450 3700
 F 0 "J2" H 4368 3275 50  0000 C CNN
-F 1 "Screw_Terminal_01x05" H 4368 3366 50  0000 C CNN
-F 2 "Connectors:SCREWTERMINAL-3.5MM-5" H 4450 3700 50  0001 C CNN
+F 1 "Screw_Term_RPi" H 4368 3366 50  0000 C CNN
+F 2 "digikey-footprints:Term_Block_1x5_P5.08mm" H 4450 3700 50  0001 C CNN
 F 3 "~" H 4450 3700 50  0001 C CNN
 	1    4450 3700
 	-1   0    0    1   
 $EndComp
 Text Label 4650 3900 0    50   ~ 0
-LV_FanPowerDemand
+LV_PrinterPowerStatus
 NoConn ~ 11500 2050
 $Comp
 L Connector:Conn_01x02_Male J11
 U 1 1 5CCE850B
 P 10500 1750
 F 0 "J11" H 10472 1632 50  0000 R CNN
-F 1 "Conn_01x02_Male" H 10472 1723 50  0000 R CNN
+F 1 "Conn_Switch" H 10472 1723 50  0000 R CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 10500 1750 50  0001 C CNN
 F 3 "~" H 10500 1750 50  0001 C CNN
 	1    10500 1750
@@ -351,7 +349,7 @@ L Connector:Conn_01x02_Male J6
 U 1 1 5CC2C13B
 P 8600 1250
 F 0 "J6" H 8572 1132 50  0000 R CNN
-F 1 "Conn_01x02_Male" H 8572 1223 50  0000 R CNN
+F 1 "Conn_Piezo" H 8572 1223 50  0000 R CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 8600 1250 50  0001 C CNN
 F 3 "~" H 8600 1250 50  0001 C CNN
 	1    8600 1250
@@ -436,7 +434,7 @@ L Connector:Screw_Terminal_01x02 J9
 U 1 1 5CC6A5CF
 P 9750 2600
 F 0 "J9" H 9830 2592 50  0000 L CNN
-F 1 "Screw_Terminal_01x02" H 9830 2501 50  0000 L CNN
+F 1 "PRINTER_RELAY" H 9830 2501 50  0000 L CNN
 F 2 "Connectors:SCREWTERMINAL-5MM-2" H 9750 2600 50  0001 C CNN
 F 3 "~" H 9750 2600 50  0001 C CNN
 	1    9750 2600
@@ -525,7 +523,7 @@ L Connector:Screw_Terminal_01x02 J10
 U 1 1 5CC73F57
 P 10150 4350
 F 0 "J10" H 10230 4342 50  0000 L CNN
-F 1 "Screw_Terminal_01x02" H 10230 4251 50  0000 L CNN
+F 1 "FAN_RELAY" H 10230 4251 50  0000 L CNN
 F 2 "Connectors:SCREWTERMINAL-5MM-2" H 10150 4350 50  0001 C CNN
 F 3 "~" H 10150 4350 50  0001 C CNN
 	1    10150 4350
@@ -563,7 +561,6 @@ NoConn ~ 2500 2400
 NoConn ~ 1900 700 
 NoConn ~ 2500 1100
 NoConn ~ 2500 1500
-NoConn ~ 2100 2700
 NoConn ~ 1500 1100
 NoConn ~ 1500 1200
 NoConn ~ 1500 2000
@@ -598,7 +595,7 @@ L Connector:Conn_01x03_Male J7
 U 1 1 5CCAE331
 P 9600 3650
 F 0 "J7" H 9572 3582 50  0000 R CNN
-F 1 "Conn_01x03_Male" H 9572 3673 50  0000 R CNN
+F 1 "Conn_Printer_Mode" H 9572 3673 50  0000 R CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 9600 3650 50  0001 C CNN
 F 3 "~" H 9600 3650 50  0001 C CNN
 	1    9600 3650
@@ -626,7 +623,7 @@ L Connector:Conn_01x03_Male J8
 U 1 1 5CCBFC14
 P 9600 5500
 F 0 "J8" H 9572 5432 50  0000 R CNN
-F 1 "Conn_01x03_Male" H 9572 5523 50  0000 R CNN
+F 1 "Conn_Fan_Mode" H 9572 5523 50  0000 R CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 9600 5500 50  0001 C CNN
 F 3 "~" H 9600 5500 50  0001 C CNN
 	1    9600 5500
@@ -652,7 +649,7 @@ L Connector:Screw_Terminal_01x02 J4
 U 1 1 5CCF3969
 P 5750 4600
 F 0 "J4" H 5668 4275 50  0000 C CNN
-F 1 "Screw_Terminal_01x02" H 5668 4366 50  0000 C CNN
+F 1 "12V_IN" H 5668 4366 50  0000 C CNN
 F 2 "Connectors:SCREWTERMINAL-5MM-2" H 5750 4600 50  0001 C CNN
 F 3 "~" H 5750 4600 50  0001 C CNN
 	1    5750 4600
@@ -696,7 +693,7 @@ L Connector:Conn_01x02_Male J5
 U 1 1 5CC3E12C
 P 7300 5000
 F 0 "J5" H 7272 4882 50  0000 R CNN
-F 1 "Conn_01x02_Male" H 7272 4973 50  0000 R CNN
+F 1 "Conn_Pwr_LED" H 7272 4973 50  0000 R CNN
 F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 7300 5000 50  0001 C CNN
 F 3 "~" H 7300 5000 50  0001 C CNN
 	1    7300 5000
@@ -756,9 +753,9 @@ DETECTOR_SIGNAL
 Text Label 1500 5650 2    50   ~ 0
 LV_FanPowerDemand
 Text Label 4450 2050 0    50   ~ 0
-LV_FanPowerDemand
+LV_AlarmTriggered
 Text Label 3550 2050 2    50   ~ 0
-HV_FanPowerDemand
+HV_AlarmTriggered
 Text Label 7350 1550 2    50   ~ 0
 HV_AlarmTriggered
 $Comp
@@ -879,4 +876,15 @@ F 3 "" H 1600 7050 50  0001 C CNN
 $EndComp
 Text Label 1200 7050 2    50   ~ 0
 RESET
+$Comp
+L power:GND #PWR0101
+U 1 1 5CE49583
+P 2100 2700
+F 0 "#PWR0101" H 2100 2450 50  0001 C CNN
+F 1 "GND" H 2105 2527 50  0000 C CNN
+F 2 "" H 2100 2700 50  0001 C CNN
+F 3 "" H 2100 2700 50  0001 C CNN
+	1    2100 2700
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
