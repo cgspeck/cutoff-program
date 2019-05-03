@@ -167,7 +167,7 @@ F 3 "" H 4100 2350 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Text Label 3550 1600 2    50   ~ 0
-SW_PRINTER_RELAY
+D7_PRINTER_RELAY
 Text Label 3550 1750 2    50   ~ 0
 HV_AlarmTriggered
 Text Label 4450 1900 0    50   ~ 0
@@ -873,10 +873,10 @@ F 3 "" H 5600 2900 50  0001 C CNN
 	0    1    1    0   
 $EndComp
 $Comp
-L power:+5V #PWR?
+L power:+5V #PWR0103
 U 1 1 5CC658C6
 P 5650 2450
-F 0 "#PWR?" H 5650 2300 50  0001 C CNN
+F 0 "#PWR0103" H 5650 2300 50  0001 C CNN
 F 1 "+5V" V 5665 2578 50  0000 L CNN
 F 2 "" H 5650 2450 50  0001 C CNN
 F 3 "" H 5650 2450 50  0001 C CNN
