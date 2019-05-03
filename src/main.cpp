@@ -48,6 +48,7 @@ bool softSwitchActivated = false;
 
 bool previousPiPrinterPwrDemand = false;
 bool previousPiFanPwrDemand = false;
+bool fanDemandOverridden = false;
 
 unsigned long previousFlashMillis = 0;
 unsigned long previousInputScanMillis = 0;
@@ -104,6 +105,9 @@ void doSerialReport(unsigned long currentMillis)
     Serial.print("Fan power on:");
     Serial.println(previousPiFanPwrDemand);
 
+    Serial.print("Fan power override:");
+    Serial.println(fanDemandOverridden);
+
     previousSerialReportMillis = currentMillis;
   }
 }
@@ -111,6 +115,7 @@ void doSerialReport(unsigned long currentMillis)
 void loop()
 {
   unsigned long currentMillis = millis();
+  fanDemandOverridden = false;
 
   if (startingUp)
   {
@@ -182,6 +187,15 @@ void loop()
   }
 
   bool piFanPwrDemand = isButtonDown(&inputPiPwrDemandFan);
+
+  if (piFanPwrDemand) {
+    if (!piPrinterPwrDemand) {
+      // no power to fan if power to printer is off
+      piFanPwrDemand = false;
+      fanDemandOverridden = true;
+    }
+  }
+
   if (piFanPwrDemand != previousPiFanPwrDemand)
   {
     previousPiFanPwrDemand = piFanPwrDemand;
