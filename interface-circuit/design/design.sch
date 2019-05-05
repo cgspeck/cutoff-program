@@ -88,11 +88,11 @@ NoConn ~ 2300 6350
 NoConn ~ 2400 6350
 NoConn ~ 2500 6350
 NoConn ~ 2600 6350
-Text Label 3700 3850 0    50   ~ 0
+Text Label 3700 3650 0    50   ~ 0
 LV_PrinterPowerStatus
 Text Label 3700 3550 0    50   ~ 0
 LV_FanPowerDemand
-Text Label 3700 3650 0    50   ~ 0
+Text Label 3700 3850 0    50   ~ 0
 LV_AlarmTriggered
 $Comp
 L power:GND #PWR013
