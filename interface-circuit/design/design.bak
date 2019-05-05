@@ -17,12 +17,12 @@ $EndDescr
 $Comp
 L MCU_Module:Arduino_Nano_v3.x A1
 U 1 1 5CC13554
-P 2000 1700
-F 0 "A1" H 2000 611 50  0000 C CNN
-F 1 "Arduino_Nano_v3.x" H 2000 520 50  0000 C CNN
-F 2 "Module:Arduino_Nano" H 2150 750 50  0001 L CNN
-F 3 "http://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf" H 2000 700 50  0001 C CNN
-	1    2000 1700
+P 1750 1700
+F 0 "A1" H 1750 611 50  0000 C CNN
+F 1 "Arduino_Nano_v3.x" H 1750 520 50  0000 C CNN
+F 2 "Module:Arduino_Nano" H 1900 750 50  0001 L CNN
+F 3 "http://www.mouser.com/pdfdocs/Gravitech_Arduino_Nano3_0.pdf" H 1750 700 50  0001 C CNN
+	1    1750 1700
 	1    0    0    -1  
 $EndComp
 $Comp
@@ -105,72 +105,72 @@ F 3 "" H 3700 3750 50  0001 C CNN
 	1    3700 3750
 	0    -1   -1   0   
 $EndComp
-Text Label 3550 1900 2    50   ~ 0
+Text Label 4450 1900 2    50   ~ 0
 LV_PrinterPowerDemand
-Text Label 4450 1600 0    50   ~ 0
+Text Label 5350 1600 0    50   ~ 0
 LV_PrinterPowerStatus
-Text Label 4450 1750 0    50   ~ 0
+Text Label 5350 1750 0    50   ~ 0
 LV_AlarmTriggered
 $Comp
 L power:+5V #PWR07
 U 1 1 5CC629AA
-P 3950 1350
-F 0 "#PWR07" H 3950 1200 50  0001 C CNN
-F 1 "+5V" H 3965 1523 50  0000 C CNN
-F 2 "" H 3950 1350 50  0001 C CNN
-F 3 "" H 3950 1350 50  0001 C CNN
-	1    3950 1350
+P 4850 1350
+F 0 "#PWR07" H 4850 1200 50  0001 C CNN
+F 1 "+5V" H 4865 1523 50  0000 C CNN
+F 2 "" H 4850 1350 50  0001 C CNN
+F 3 "" H 4850 1350 50  0001 C CNN
+	1    4850 1350
 	1    0    0    -1  
 $EndComp
 $Comp
 L custom_symbols:LogicLevelConverter_BOB-08745 U1
 U 1 1 5CC30C4F
-P 4000 1850
-F 0 "U1" H 4000 2650 50  0000 C CNN
-F 1 "LogicLevelConverter_BOB-08745" H 4000 2756 50  0000 C CNN
-F 2 "custom-footprints:LOGIC_LEVEL_CONVERTER_BOB-8745" H 3350 2600 50  0001 C CNN
-F 3 "" H 3350 2600 50  0001 C CNN
-	1    4000 1850
+P 4900 1850
+F 0 "U1" H 4900 2650 50  0000 C CNN
+F 1 "LogicLevelConverter_BOB-08745" H 4900 2756 50  0000 C CNN
+F 2 "custom-footprints:LOGIC_LEVEL_CONVERTER_BOB-8745" H 4250 2600 50  0001 C CNN
+F 3 "" H 4250 2600 50  0001 C CNN
+	1    4900 1850
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:+3V3 #PWR09
 U 1 1 5CC6AF02
-P 4100 1350
-F 0 "#PWR09" H 4100 1200 50  0001 C CNN
-F 1 "+3V3" H 4115 1523 50  0000 C CNN
-F 2 "" H 4100 1350 50  0001 C CNN
-F 3 "" H 4100 1350 50  0001 C CNN
-	1    4100 1350
+P 5000 1350
+F 0 "#PWR09" H 5000 1200 50  0001 C CNN
+F 1 "+3V3" H 5015 1523 50  0000 C CNN
+F 2 "" H 5000 1350 50  0001 C CNN
+F 3 "" H 5000 1350 50  0001 C CNN
+	1    5000 1350
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR08
 U 1 1 5CC6BA8E
-P 3950 2350
-F 0 "#PWR08" H 3950 2100 50  0001 C CNN
-F 1 "GND" H 3955 2177 50  0000 C CNN
-F 2 "" H 3950 2350 50  0001 C CNN
-F 3 "" H 3950 2350 50  0001 C CNN
-	1    3950 2350
+P 4850 2350
+F 0 "#PWR08" H 4850 2100 50  0001 C CNN
+F 1 "GND" H 4855 2177 50  0000 C CNN
+F 2 "" H 4850 2350 50  0001 C CNN
+F 3 "" H 4850 2350 50  0001 C CNN
+	1    4850 2350
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR010
 U 1 1 5CC6BF5B
-P 4100 2350
-F 0 "#PWR010" H 4100 2100 50  0001 C CNN
-F 1 "GND" H 4105 2177 50  0000 C CNN
-F 2 "" H 4100 2350 50  0001 C CNN
-F 3 "" H 4100 2350 50  0001 C CNN
-	1    4100 2350
+P 5000 2350
+F 0 "#PWR010" H 5000 2100 50  0001 C CNN
+F 1 "GND" H 5005 2177 50  0000 C CNN
+F 2 "" H 5000 2350 50  0001 C CNN
+F 3 "" H 5000 2350 50  0001 C CNN
+	1    5000 2350
 	1    0    0    -1  
 $EndComp
-Text Label 3550 1600 2    50   ~ 0
-SW_PRINTER_RELAY
-Text Label 3550 1750 2    50   ~ 0
+Text Label 4450 1600 2    50   ~ 0
+D7_PRINTER_RELAY
+Text Label 4450 1750 2    50   ~ 0
 HV_AlarmTriggered
-Text Label 4450 1900 0    50   ~ 0
+Text Label 5350 1900 0    50   ~ 0
 HV_PrinterPowerDemand
 $Comp
 L Connector:Conn_01x02_Male J12
@@ -550,62 +550,60 @@ F 3 "" H 9250 4300 50  0001 C CNN
 	1    0    0    -1  
 $EndComp
 Connection ~ 9250 4300
-NoConn ~ 2500 1700
-NoConn ~ 2500 1800
-NoConn ~ 2500 1900
-NoConn ~ 2500 2000
-NoConn ~ 2500 2100
-NoConn ~ 2500 2200
-NoConn ~ 2500 2300
-NoConn ~ 2500 2400
-NoConn ~ 1900 700 
-NoConn ~ 2500 1100
-NoConn ~ 2500 1500
-NoConn ~ 1500 1100
-NoConn ~ 1500 1200
-NoConn ~ 1500 2000
-NoConn ~ 1500 2100
-NoConn ~ 1500 2200
-NoConn ~ 1500 2300
-NoConn ~ 1500 2400
+NoConn ~ 2250 1700
+NoConn ~ 2250 1900
+NoConn ~ 2250 2000
+NoConn ~ 2250 2200
+NoConn ~ 2250 2300
+NoConn ~ 2250 2400
+NoConn ~ 1650 700 
+NoConn ~ 2250 1100
+NoConn ~ 2250 1500
+NoConn ~ 1250 1100
+NoConn ~ 1250 1200
+NoConn ~ 1250 2000
+NoConn ~ 1250 2100
+NoConn ~ 1250 2200
+NoConn ~ 1250 2300
+NoConn ~ 1250 2400
 $Comp
 L power:+3V3 #PWR05
 U 1 1 5CCA5351
-P 2100 700
-F 0 "#PWR05" H 2100 550 50  0001 C CNN
-F 1 "+3V3" H 2115 873 50  0000 C CNN
-F 2 "" H 2100 700 50  0001 C CNN
-F 3 "" H 2100 700 50  0001 C CNN
-	1    2100 700 
+P 1850 700
+F 0 "#PWR05" H 1850 550 50  0001 C CNN
+F 1 "+3V3" H 1865 873 50  0000 C CNN
+F 2 "" H 1850 700 50  0001 C CNN
+F 3 "" H 1850 700 50  0001 C CNN
+	1    1850 700 
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:+5V #PWR06
 U 1 1 5CCA5F2D
-P 2200 700
-F 0 "#PWR06" H 2200 550 50  0001 C CNN
-F 1 "+5V" H 2215 873 50  0000 C CNN
-F 2 "" H 2200 700 50  0001 C CNN
-F 3 "" H 2200 700 50  0001 C CNN
-	1    2200 700 
+P 1950 700
+F 0 "#PWR06" H 1950 550 50  0001 C CNN
+F 1 "+5V" H 1965 873 50  0000 C CNN
+F 2 "" H 1950 700 50  0001 C CNN
+F 3 "" H 1950 700 50  0001 C CNN
+	1    1950 700 
 	1    0    0    -1  
 $EndComp
 $Comp
 L Connector:Conn_01x03_Male J7
 U 1 1 5CCAE331
-P 5450 2450
-F 0 "J7" H 5422 2382 50  0000 R CNN
-F 1 "Conn_Printer_Mode" H 5422 2473 50  0000 R CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 5450 2450 50  0001 C CNN
-F 3 "~" H 5450 2450 50  0001 C CNN
-	1    5450 2450
+P 6450 3300
+F 0 "J7" H 6422 3232 50  0000 R CNN
+F 1 "Conn_Printer_Mode" H 6422 3323 50  0000 R CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 6450 3300 50  0001 C CNN
+F 3 "~" H 6450 3300 50  0001 C CNN
+	1    6450 3300
 	1    0    0    -1  
 $EndComp
-Text Label 5650 2350 0    50   ~ 0
+Text Label 6650 3200 0    50   ~ 0
 HV_PrinterPowerDemand
 Text Label 8100 3050 1    50   ~ 0
 D7_PRINTER_RELAY
-Text Label 5600 2800 0    50   ~ 0
+Text Label 6600 3650 0    50   ~ 0
 HV_FanPowerDemand
 $Comp
 L Connector:Screw_Terminal_01x02 J4
@@ -684,40 +682,34 @@ F 3 "" H 5350 5550 50  0001 C CNN
 	1    5350 5550
 	0    -1   -1   0   
 $EndComp
-Text Label 2500 1200 0    50   ~ 0
+Text Label 2250 1200 0    50   ~ 0
 RESET
-Text Label 1500 1400 2    50   ~ 0
-SW_PRINTER_RELAY
-Text Label 1500 1500 2    50   ~ 0
+Text Label 1250 1500 2    50   ~ 0
 SW_FAN_RELAY
-Text Label 1500 1600 2    50   ~ 0
+Text Label 1250 1600 2    50   ~ 0
 SOFT_SWITCH
-Text Label 1500 1700 2    50   ~ 0
+Text Label 1250 1700 2    50   ~ 0
 HV_AlarmTriggered
-Text Label 1500 1800 2    50   ~ 0
-D7_PRINTER_RELAY
-Text Label 1500 1900 2    50   ~ 0
-D8_FAN_RELAY
 $Comp
 L power:GND #PWR04
 U 1 1 5CC65335
-P 2000 2700
-F 0 "#PWR04" H 2000 2450 50  0001 C CNN
-F 1 "GND" H 2005 2527 50  0000 C CNN
-F 2 "" H 2000 2700 50  0001 C CNN
-F 3 "" H 2000 2700 50  0001 C CNN
-	1    2000 2700
+P 1750 2700
+F 0 "#PWR04" H 1750 2450 50  0001 C CNN
+F 1 "GND" H 1755 2527 50  0000 C CNN
+F 2 "" H 1750 2700 50  0001 C CNN
+F 3 "" H 1750 2700 50  0001 C CNN
+	1    1750 2700
 	1    0    0    -1  
 $EndComp
-Text Label 1500 1300 2    50   ~ 0
+Text Label 1250 1300 2    50   ~ 0
 DETECTOR_SIGNAL
 Text Label 6700 4700 0    50   ~ 0
 DETECTOR_SIGNAL
 Text Label 1500 5650 2    50   ~ 0
 LV_FanPowerDemand
-Text Label 4450 2050 0    50   ~ 0
+Text Label 5350 2050 0    50   ~ 0
 HV_FanPowerDemand
-Text Label 3550 2050 2    50   ~ 0
+Text Label 4450 2050 2    50   ~ 0
 LV_FanPowerDemand
 Text Label 7350 1550 2    50   ~ 0
 HV_AlarmTriggered
@@ -842,49 +834,57 @@ RESET
 $Comp
 L power:GND #PWR0101
 U 1 1 5CE49583
-P 2100 2700
-F 0 "#PWR0101" H 2100 2450 50  0001 C CNN
-F 1 "GND" H 2105 2527 50  0000 C CNN
-F 2 "" H 2100 2700 50  0001 C CNN
-F 3 "" H 2100 2700 50  0001 C CNN
-	1    2100 2700
+P 1850 2700
+F 0 "#PWR0101" H 1850 2450 50  0001 C CNN
+F 1 "GND" H 1855 2527 50  0000 C CNN
+F 2 "" H 1850 2700 50  0001 C CNN
+F 3 "" H 1850 2700 50  0001 C CNN
+	1    1850 2700
 	1    0    0    -1  
 $EndComp
 $Comp
 L Connector:Conn_01x03_Male J8
 U 1 1 5CCBFC14
-P 5400 2900
-F 0 "J8" H 5372 2832 50  0000 R CNN
-F 1 "Conn_Fan_Mode" H 5372 2923 50  0000 R CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 5400 2900 50  0001 C CNN
-F 3 "~" H 5400 2900 50  0001 C CNN
-	1    5400 2900
+P 6400 3750
+F 0 "J8" H 6372 3682 50  0000 R CNN
+F 1 "Conn_Fan_Mode" H 6372 3773 50  0000 R CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 6400 3750 50  0001 C CNN
+F 3 "~" H 6400 3750 50  0001 C CNN
+	1    6400 3750
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:+5V #PWR0102
 U 1 1 5CC5D628
-P 5600 2900
-F 0 "#PWR0102" H 5600 2750 50  0001 C CNN
-F 1 "+5V" V 5615 3028 50  0000 L CNN
-F 2 "" H 5600 2900 50  0001 C CNN
-F 3 "" H 5600 2900 50  0001 C CNN
-	1    5600 2900
+P 6600 3750
+F 0 "#PWR0102" H 6600 3600 50  0001 C CNN
+F 1 "+5V" V 6615 3878 50  0000 L CNN
+F 2 "" H 6600 3750 50  0001 C CNN
+F 3 "" H 6600 3750 50  0001 C CNN
+	1    6600 3750
 	0    1    1    0   
 $EndComp
 $Comp
-L power:+5V #PWR?
+L power:+5V #PWR0103
 U 1 1 5CC658C6
-P 5650 2450
-F 0 "#PWR?" H 5650 2300 50  0001 C CNN
-F 1 "+5V" V 5665 2578 50  0000 L CNN
-F 2 "" H 5650 2450 50  0001 C CNN
-F 3 "" H 5650 2450 50  0001 C CNN
-	1    5650 2450
+P 6650 3300
+F 0 "#PWR0103" H 6650 3150 50  0001 C CNN
+F 1 "+5V" V 6665 3428 50  0000 L CNN
+F 2 "" H 6650 3300 50  0001 C CNN
+F 3 "" H 6650 3300 50  0001 C CNN
+	1    6650 3300
 	0    1    1    0   
 $EndComp
-Text Label 5600 3000 0    50   ~ 0
+Text Label 6600 3850 0    50   ~ 0
 SW_FAN_RELAY
-Text Label 5650 2550 0    50   ~ 0
+Text Label 6650 3400 0    50   ~ 0
 SW_PRINTER_RELAY
+Text Label 2250 1800 0    50   ~ 0
+SW_PRINTER_RELAY
+NoConn ~ 1250 1400
+Text Label 2250 2100 0    50   ~ 0
+D7_PRINTER_RELAY
+NoConn ~ 1250 1800
+Text Label 1250 1900 2    50   ~ 0
+D8_FAN_RELAY
 $EndSCHEMATC

@@ -12,7 +12,7 @@
  * https://hackaday.com/2015/12/09/embed-with-elliot-debounce-your-noisy-buttons-part-i/
  *
 */
-#define PIN_IN_PI_PWR_DEMAND_PRINTER 3
+#define PIN_IN_PI_PWR_DEMAND_PRINTER A1
 #define PIN_IN_PI_PWR_DEMAND_FAN 4
 
 /*
@@ -31,7 +31,7 @@ The pushbutton can be repurposed as a reset button if the detector is triggered.
 #define PIN_OUT_ALERT 6
 
 // printer power status led can piggy back off the fan relay pin
-#define PIN_RELAY_PRINTER 7
+#define PIN_RELAY_PRINTER A4
 #define PIN_RELAY_FAN 8
 
 #define FLASH_INTERVAL 500
