@@ -28,10 +28,10 @@ The pushbutton can be repurposed as a reset button if the detector is triggered.
 // buzzer can be combined with alert led transistor
 // printer power led  can be combined with power relay
 // combines led, buzzer, pi notification
-#define PIN_OUT_ALERT 6
+#define PIN_OUT_ALERT A4
 
 // printer power status led can piggy back off the fan relay pin
-#define PIN_RELAY_PRINTER A4
+#define PIN_RELAY_PRINTER 6
 #define PIN_RELAY_FAN 8
 
 #define FLASH_INTERVAL 500

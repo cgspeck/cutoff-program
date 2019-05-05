@@ -107,9 +107,9 @@ F 3 "" H 3700 3750 50  0001 C CNN
 $EndComp
 Text Label 4450 1900 2    50   ~ 0
 LV_PrinterPowerDemand
-Text Label 5350 1600 0    50   ~ 0
-LV_PrinterPowerStatus
 Text Label 5350 1750 0    50   ~ 0
+LV_PrinterPowerStatus
+Text Label 5350 1600 0    50   ~ 0
 LV_AlarmTriggered
 $Comp
 L power:+5V #PWR07
@@ -166,9 +166,9 @@ F 3 "" H 5000 2350 50  0001 C CNN
 	1    5000 2350
 	1    0    0    -1  
 $EndComp
-Text Label 4450 1600 2    50   ~ 0
-D7_PRINTER_RELAY
 Text Label 4450 1750 2    50   ~ 0
+D7_PRINTER_RELAY
+Text Label 4450 1600 2    50   ~ 0
 HV_AlarmTriggered
 Text Label 5350 1900 0    50   ~ 0
 HV_PrinterPowerDemand
@@ -688,7 +688,7 @@ Text Label 1250 1500 2    50   ~ 0
 SW_FAN_RELAY
 Text Label 1250 1600 2    50   ~ 0
 SOFT_SWITCH
-Text Label 1250 1700 2    50   ~ 0
+Text Label 2250 2100 0    50   ~ 0
 HV_AlarmTriggered
 $Comp
 L power:GND #PWR04
@@ -882,7 +882,7 @@ SW_PRINTER_RELAY
 Text Label 2250 1800 0    50   ~ 0
 SW_PRINTER_RELAY
 NoConn ~ 1250 1400
-Text Label 2250 2100 0    50   ~ 0
+Text Label 1250 1700 2    50   ~ 0
 D7_PRINTER_RELAY
 NoConn ~ 1250 1800
 Text Label 1250 1900 2    50   ~ 0
