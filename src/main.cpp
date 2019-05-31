@@ -16,11 +16,12 @@
 #define PIN_IN_PI_PWR_DEMAND_FAN 4
 
 /*
+An inline RCD physically prevents entire system from starting up following a powercut
+without intervention.
 
-The pushbutton has to be pressed to turn the softswitch on, to prevent things from
-starting up automatically following disconnetion and reconnection of mains.
+The circuit also includes a momentary push button grounding the reset pin.
 
-The pushbutton can be repurposed as a reset button if the detector is triggered.
+This pin is reserved for a future use.
 */
 #define PIN_IN_PUSHBUTTON 5
 
@@ -44,7 +45,6 @@ bool startingUp = true;
 bool firstCheck = true;
 bool alertFlashState = false;
 bool detectorTriggered = false;
-bool softSwitchActivated = false;
 
 bool previousPiPrinterPwrDemand = false;
 bool previousPiFanPwrDemand = false;
@@ -73,7 +73,6 @@ void setup()
   pinMode(PIN_IN_DETECTOR_SIGNAL, INPUT);
   pinMode(PIN_IN_PI_PWR_DEMAND_PRINTER, INPUT);
   pinMode(PIN_IN_PI_PWR_DEMAND_FAN, INPUT);
-  pinMode(PIN_IN_PUSHBUTTON, INPUT_PULLUP);
 
   // combines led, buzzer, pi notification
   setupOutputPin(PIN_OUT_ALERT);
@@ -95,9 +94,6 @@ void doSerialReport(unsigned long currentMillis)
 
     Serial.print("Status:");
     Serial.println(statusMsg);
-
-    Serial.print("Activated:");
-    Serial.println(softSwitchActivated);
 
     Serial.print("Printer power on:");
     Serial.println(previousPiPrinterPwrDemand);
@@ -155,18 +151,7 @@ void loop()
     updateButton(&inputDetectorHistory, PIN_IN_DETECTOR_SIGNAL);
     updateButton(&inputPiPwrDemandFan, PIN_IN_PI_PWR_DEMAND_FAN);
     updateButton(&inputPiPwrDemandPrinter, PIN_IN_PI_PWR_DEMAND_PRINTER);
-    updateButton(&inputPushButtonHistory, PIN_IN_PUSHBUTTON);
     previousInputScanMillis = currentMillis;
-  }
-
-  if (!softSwitchActivated) {
-    // pulled up, so goes low when pressed, high when released
-    if (isButtonPressed(&inputPushButtonHistory)) {
-      softSwitchActivated = true;
-    } else {
-      doSerialReport(currentMillis);
-      return;
-    }
   }
 
   if (isButtonUp(&inputDetectorHistory))
