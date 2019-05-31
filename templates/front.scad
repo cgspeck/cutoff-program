@@ -34,6 +34,6 @@ projection() difference() {
             spacing * i,
             base_height / 2,
             0
-        ]) located_cylinder(holes[i - 1], thickness * 2);
+        ]) located_cylinder(holes[i - 1] / 2, thickness * 2);
     }
 }
