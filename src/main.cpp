@@ -1,7 +1,5 @@
 #include <Arduino.h>
 
-#include "debounce.h"
-
 // INPUT SIGNALS
 #define PIN_IN_DETECTOR_SIGNAL 2
 /*
@@ -54,11 +52,6 @@ unsigned long previousFlashMillis = 0;
 unsigned long previousInputScanMillis = 0;
 unsigned long previousSerialReportMillis = 0;
 
-unsigned int inputDetectorHistory = 0;
-
-unsigned int inputPiPwrDemandPrinter = 0;
-unsigned int inputPiPwrDemandFan = 0;
-unsigned int inputPushButtonHistory = 0;
 // function prototypes
 void setupOutputPin(int pinNumber, int initialState = LOW);
 
@@ -148,13 +141,10 @@ void loop()
 
   if ((unsigned long)(currentMillis - previousInputScanMillis) >= (int)INPUT_SCAN_INTERVAL)
   {
-    updateButton(&inputDetectorHistory, PIN_IN_DETECTOR_SIGNAL);
-    updateButton(&inputPiPwrDemandFan, PIN_IN_PI_PWR_DEMAND_FAN);
-    updateButton(&inputPiPwrDemandPrinter, PIN_IN_PI_PWR_DEMAND_PRINTER);
     previousInputScanMillis = currentMillis;
   }
 
-  if (isButtonUp(&inputDetectorHistory))
+  if (digitalRead(PIN_IN_DETECTOR_SIGNAL) == LOW)
   {
     digitalWrite(PIN_RELAY_PRINTER, LOW);
     digitalWrite(PIN_OUT_ALERT, HIGH);
@@ -163,7 +153,7 @@ void loop()
     return;
   }
 
-  bool piPrinterPwrDemand = isButtonDown(&inputPiPwrDemandPrinter);
+  bool piPrinterPwrDemand = (digitalRead(PIN_IN_PI_PWR_DEMAND_PRINTER) == HIGH);
 
   if (piPrinterPwrDemand != previousPiPrinterPwrDemand)
   {
@@ -171,7 +161,7 @@ void loop()
     digitalWrite(PIN_RELAY_PRINTER, previousPiPrinterPwrDemand ? HIGH : LOW);
   }
 
-  bool piFanPwrDemand = isButtonDown(&inputPiPwrDemandFan);
+  bool piFanPwrDemand = (digitalRead(PIN_IN_PI_PWR_DEMAND_FAN) == HIGH);
 
   if (piFanPwrDemand) {
     if (!piPrinterPwrDemand) {
