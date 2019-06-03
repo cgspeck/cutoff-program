@@ -47,6 +47,8 @@ bool detectorTriggered = false;
 bool previousPiPrinterPwrDemand = false;
 bool previousPiFanPwrDemand = false;
 bool fanDemandOverridden = false;
+bool actualPrinterPwrState = false;
+bool actualFanPwrState = false;
 
 unsigned long previousFlashMillis = 0;
 unsigned long previousInputScanMillis = 0;
@@ -88,10 +90,16 @@ void doSerialReport(unsigned long currentMillis)
     Serial.print("Status:");
     Serial.println(statusMsg);
 
-    Serial.print("Printer power on:");
+    Serial.print("Printer power state:");
+    Serial.println(actualPrinterPwrState);
+
+    Serial.print("Fan power state:");
+    Serial.println(actualFanPwrState);
+
+    Serial.print("Printer power demand:");
     Serial.println(previousPiPrinterPwrDemand);
 
-    Serial.print("Fan power on:");
+    Serial.print("Fan power demand:");
     Serial.println(previousPiFanPwrDemand);
 
     Serial.print("Fan power override:");
@@ -146,9 +154,13 @@ void loop()
 
   if (digitalRead(PIN_IN_DETECTOR_SIGNAL) == LOW)
   {
+
     digitalWrite(PIN_RELAY_PRINTER, LOW);
+    digitalWrite(PIN_RELAY_FAN, LOW);
     digitalWrite(PIN_OUT_ALERT, HIGH);
     detectorTriggered = true;
+    actualPrinterPwrState = false;
+    actualFanPwrState = false;
     doSerialReport(currentMillis);
     return;
   }
@@ -158,10 +170,13 @@ void loop()
   if (piPrinterPwrDemand != previousPiPrinterPwrDemand)
   {
     previousPiPrinterPwrDemand = piPrinterPwrDemand;
+    actualPrinterPwrState = previousPiPrinterPwrDemand;
     digitalWrite(PIN_RELAY_PRINTER, previousPiPrinterPwrDemand ? HIGH : LOW);
   }
 
   bool piFanPwrDemand = (digitalRead(PIN_IN_PI_PWR_DEMAND_FAN) == HIGH);
+
+  previousPiFanPwrDemand = piFanPwrDemand;
 
   if (piFanPwrDemand) {
     if (!piPrinterPwrDemand) {
@@ -171,10 +186,9 @@ void loop()
     }
   }
 
-  if (piFanPwrDemand != previousPiFanPwrDemand)
-  {
-    previousPiFanPwrDemand = piFanPwrDemand;
-    digitalWrite(PIN_RELAY_PRINTER, previousPiFanPwrDemand ? HIGH : LOW);
+  if (actualFanPwrState != piFanPwrDemand) {
+    actualFanPwrState = piFanPwrDemand;
+    digitalWrite(PIN_RELAY_PRINTER, piFanPwrDemand ? HIGH : LOW);
   }
 
   doSerialReport(currentMillis);
