@@ -10,7 +10,7 @@
  * https://hackaday.com/2015/12/09/embed-with-elliot-debounce-your-noisy-buttons-part-i/
  *
 */
-#define PIN_IN_PI_PWR_DEMAND_PRINTER A1
+#define PIN_IN_PI_PWR_DEMAND_PRINTER 15
 #define PIN_IN_PI_PWR_DEMAND_FAN 4
 
 /*
