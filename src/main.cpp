@@ -172,7 +172,7 @@ void loop()
   {
     previousPiPrinterPwrDemand = piPrinterPwrDemand;
     actualPrinterPwrState = previousPiPrinterPwrDemand;
-    digitalWrite(PIN_RELAY_PRINTER, actualPrinterPwrState ? HIGH : LOW);
+    digitalWrite(PIN_RELAY_PRINTER, actualPrinterPwrState);
   }
 
   bool piFanPwrDemand = (digitalRead(PIN_IN_PI_PWR_DEMAND_FAN) == HIGH);
@@ -189,7 +189,7 @@ void loop()
 
   if (actualFanPwrState != piFanPwrDemand) {
     actualFanPwrState = piFanPwrDemand;
-    digitalWrite(PIN_RELAY_FAN, piFanPwrDemand ? HIGH : LOW);
+    digitalWrite(PIN_RELAY_FAN, piFanPwrDemand);
   }
 
   doSerialReport(currentMillis);
