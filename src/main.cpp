@@ -60,7 +60,8 @@ void setupOutputPin(int pinNumber, int initialState = LOW);
 // functions
 void setupOutputPin(int pinNumber, int initialState)
 {
-  pinMode(pinNumber, initialState);
+  pinMode(pinNumber, OUTPUT);
+  digitalWrite(pinNumber, initialState);
 }
 
 void setup()
