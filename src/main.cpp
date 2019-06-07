@@ -67,8 +67,8 @@ void setupOutputPin(int pinNumber, int initialState)
 void setup()
 {
   pinMode(PIN_IN_DETECTOR_SIGNAL, INPUT);
-  pinMode(PIN_IN_PI_PWR_DEMAND_PRINTER, INPUT);
-  pinMode(PIN_IN_PI_PWR_DEMAND_FAN, INPUT);
+  pinMode(PIN_IN_PI_PWR_DEMAND_PRINTER, INPUT_PULLUP);
+  pinMode(PIN_IN_PI_PWR_DEMAND_FAN, INPUT_PULLUP);
 
   // combines led, buzzer, pi notification
   setupOutputPin(PIN_OUT_ALERT);
@@ -166,7 +166,7 @@ void loop()
     return;
   }
 
-  bool piPrinterPwrDemand = (digitalRead(PIN_IN_PI_PWR_DEMAND_PRINTER) == HIGH);
+  bool piPrinterPwrDemand = (digitalRead(PIN_IN_PI_PWR_DEMAND_PRINTER) == LOW);
 
   if (piPrinterPwrDemand != previousPiPrinterPwrDemand)
   {
@@ -175,7 +175,7 @@ void loop()
     digitalWrite(PIN_RELAY_PRINTER, actualPrinterPwrState);
   }
 
-  bool piFanPwrDemand = (digitalRead(PIN_IN_PI_PWR_DEMAND_FAN) == HIGH);
+  bool piFanPwrDemand = (digitalRead(PIN_IN_PI_PWR_DEMAND_FAN) == LOW);
 
   previousPiFanPwrDemand = piFanPwrDemand;
 
