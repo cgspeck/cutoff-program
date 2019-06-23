@@ -4,11 +4,7 @@
 #define PIN_IN_DETECTOR_SIGNAL 2
 /*
  * no need to define a reset input just bring RESET to low by closing with GND
- * RESET pin has an internal pullup resistor remember to add hardware debounce like below
- * with a 10k and 1k resistor and a 0.1uF capacitor
- *
- * https://hackaday.com/2015/12/09/embed-with-elliot-debounce-your-noisy-buttons-part-i/
- *
+ * RESET pin has an internal pullup resistor
 */
 #define PIN_IN_PI_PWR_DEMAND_PRINTER A1
 #define PIN_IN_PI_PWR_DEMAND_FAN 4
@@ -24,12 +20,9 @@ This pin is reserved for a future use.
 #define PIN_IN_PUSHBUTTON 5
 
 // OUTPUT SIGNALS
-// buzzer can be combined with alert led transistor
-// printer power led  can be combined with power relay
-// combines led, buzzer, pi notification
+// combines buzzer and pi notification
 #define PIN_OUT_ALERT A4
 
-// printer power status led can piggy back off the fan relay pin
 #define PIN_RELAY_PRINTER 6
 #define PIN_RELAY_FAN 8
 
@@ -69,13 +62,9 @@ void setup()
   pinMode(PIN_IN_DETECTOR_SIGNAL, INPUT);
   pinMode(PIN_IN_PI_PWR_DEMAND_PRINTER, INPUT_PULLUP);
   pinMode(PIN_IN_PI_PWR_DEMAND_FAN, INPUT_PULLUP);
-
-  // combines led, buzzer, pi notification
   setupOutputPin(PIN_OUT_ALERT);
-
   setupOutputPin(PIN_RELAY_PRINTER);
   setupOutputPin(PIN_RELAY_FAN);
-
   Serial.begin(9600);
 }
 
@@ -121,7 +110,7 @@ void loop()
     if ((unsigned long)(currentMillis - previousFlashMillis) >= (int)FLASH_INTERVAL)
     {
       alertFlashState = !alertFlashState;
-      // combines led, buzzer, pi notification
+      // combines buzzer and pi notification
       digitalWrite(PIN_OUT_ALERT, alertFlashState);
       previousFlashMillis = currentMillis;
 
@@ -143,7 +132,6 @@ void loop()
 
   if (firstCheck)
   {
-    // combines led, buzzer, pi notification
     digitalWrite(PIN_OUT_ALERT, LOW);
     firstCheck = false;
   }

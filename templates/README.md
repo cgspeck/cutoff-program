@@ -2,7 +2,7 @@
 
 ## Front Template
 
-Required penetrations:
+Required punchouts:
 
 * ac pilot light
 * led power light
@@ -13,7 +13,7 @@ Required penetrations:
 
 ## Rear Template
 
-Required penetrations:
+Required punchouts:
 
 * IEC power inlet
 * AU Power outlet (printer)
