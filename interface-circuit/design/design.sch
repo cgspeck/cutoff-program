@@ -199,49 +199,49 @@ RESET
 $Comp
 L Connector:Screw_Terminal_01x05 J3
 U 1 1 5CC995BB
-P 7550 5900
-F 0 "J3" H 7630 5942 50  0000 L CNN
-F 1 "Screw_Term_Detector" H 7630 5851 50  0000 L CNN
-F 2 "digikey-footprints:Term_Block_1x5_P5.08mm" H 7550 5900 50  0001 C CNN
-F 3 "~" H 7550 5900 50  0001 C CNN
-	1    7550 5900
+P 5800 5900
+F 0 "J3" H 5880 5942 50  0000 L CNN
+F 1 "Screw_Term_Detector" H 5880 5851 50  0000 L CNN
+F 2 "digikey-footprints:Term_Block_1x5_P5.08mm" H 5800 5900 50  0001 C CNN
+F 3 "~" H 5800 5900 50  0001 C CNN
+	1    5800 5900
 	-1   0    0    1   
 $EndComp
 $Comp
 L power:+12V #PWR016
 U 1 1 5CC9A229
-P 7750 6100
-F 0 "#PWR016" H 7750 5950 50  0001 C CNN
-F 1 "+12V" V 7765 6228 50  0000 L CNN
-F 2 "" H 7750 6100 50  0001 C CNN
-F 3 "" H 7750 6100 50  0001 C CNN
-	1    7750 6100
+P 6000 6100
+F 0 "#PWR016" H 6000 5950 50  0001 C CNN
+F 1 "+12V" V 6015 6228 50  0000 L CNN
+F 2 "" H 6000 6100 50  0001 C CNN
+F 3 "" H 6000 6100 50  0001 C CNN
+	1    6000 6100
 	0    1    1    0   
 $EndComp
 $Comp
 L power:GND #PWR015
 U 1 1 5CC9AB9C
-P 7750 6000
-F 0 "#PWR015" H 7750 5750 50  0001 C CNN
-F 1 "GND" V 7755 5872 50  0000 R CNN
-F 2 "" H 7750 6000 50  0001 C CNN
-F 3 "" H 7750 6000 50  0001 C CNN
-	1    7750 6000
+P 6000 6000
+F 0 "#PWR015" H 6000 5750 50  0001 C CNN
+F 1 "GND" V 6005 5872 50  0000 R CNN
+F 2 "" H 6000 6000 50  0001 C CNN
+F 3 "" H 6000 6000 50  0001 C CNN
+	1    6000 6000
 	0    -1   -1   0   
 $EndComp
 $Comp
 L power:+5V #PWR014
 U 1 1 5CC9B73F
-P 7750 5900
-F 0 "#PWR014" H 7750 5750 50  0001 C CNN
-F 1 "+5V" V 7765 6028 50  0000 L CNN
-F 2 "" H 7750 5900 50  0001 C CNN
-F 3 "" H 7750 5900 50  0001 C CNN
-	1    7750 5900
+P 6000 5900
+F 0 "#PWR014" H 6000 5750 50  0001 C CNN
+F 1 "+5V" V 6015 6028 50  0000 L CNN
+F 2 "" H 6000 5900 50  0001 C CNN
+F 3 "" H 6000 5900 50  0001 C CNN
+	1    6000 5900
 	0    1    1    0   
 $EndComp
 NoConn ~ 5400 300 
-NoConn ~ 7750 5800
+NoConn ~ 6000 5800
 $Comp
 L Connector:Screw_Terminal_01x05 J2
 U 1 1 5CCD28E2
@@ -608,78 +608,78 @@ HV_FanPowerDemand
 $Comp
 L Connector:Screw_Terminal_01x02 J4
 U 1 1 5CCF3969
-P 4200 5050
-F 0 "J4" H 4118 4725 50  0000 C CNN
-F 1 "12V_IN" H 4118 4816 50  0000 C CNN
-F 2 "Connectors:SCREWTERMINAL-5MM-2" H 4200 5050 50  0001 C CNN
-F 3 "~" H 4200 5050 50  0001 C CNN
-	1    4200 5050
+P 3650 4500
+F 0 "J4" H 3568 4175 50  0000 C CNN
+F 1 "12V_IN" H 3568 4266 50  0000 C CNN
+F 2 "Connectors:SCREWTERMINAL-5MM-2" H 3650 4500 50  0001 C CNN
+F 3 "~" H 3650 4500 50  0001 C CNN
+	1    3650 4500
 	-1   0    0    1   
 $EndComp
 $Comp
 L power:+12V #PWR017
 U 1 1 5CCF4815
-P 4400 4950
-F 0 "#PWR017" H 4400 4800 50  0001 C CNN
-F 1 "+12V" V 4415 5078 50  0000 L CNN
-F 2 "" H 4400 4950 50  0001 C CNN
-F 3 "" H 4400 4950 50  0001 C CNN
-	1    4400 4950
+P 3850 4400
+F 0 "#PWR017" H 3850 4250 50  0001 C CNN
+F 1 "+12V" V 3865 4528 50  0000 L CNN
+F 2 "" H 3850 4400 50  0001 C CNN
+F 3 "" H 3850 4400 50  0001 C CNN
+	1    3850 4400
 	0    1    1    0   
 $EndComp
 $Comp
 L power:GND #PWR018
 U 1 1 5CCF5626
-P 4400 5050
-F 0 "#PWR018" H 4400 4800 50  0001 C CNN
-F 1 "GND" V 4405 4922 50  0000 R CNN
-F 2 "" H 4400 5050 50  0001 C CNN
-F 3 "" H 4400 5050 50  0001 C CNN
-	1    4400 5050
+P 3850 4500
+F 0 "#PWR018" H 3850 4250 50  0001 C CNN
+F 1 "GND" V 3855 4372 50  0000 R CNN
+F 2 "" H 3850 4500 50  0001 C CNN
+F 3 "" H 3850 4500 50  0001 C CNN
+	1    3850 4500
 	0    -1   -1   0   
 $EndComp
 $Comp
 L Device:R R1
 U 1 1 5CC3D025
-P 5500 5550
-F 0 "R1" V 5293 5550 50  0000 C CNN
-F 1 "220R" V 5384 5550 50  0000 C CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 5430 5550 50  0001 C CNN
-F 3 "~" H 5500 5550 50  0001 C CNN
-	1    5500 5550
+P 3950 6100
+F 0 "R1" V 3743 6100 50  0000 C CNN
+F 1 "220R" V 3834 6100 50  0000 C CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 3880 6100 50  0001 C CNN
+F 3 "~" H 3950 6100 50  0001 C CNN
+	1    3950 6100
 	0    1    1    0   
 $EndComp
 $Comp
 L Connector:Conn_01x02_Male J5
 U 1 1 5CC3E12C
-P 5850 5650
-F 0 "J5" H 5822 5532 50  0000 R CNN
-F 1 "Conn_Pwr_LED" H 5822 5623 50  0000 R CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 5850 5650 50  0001 C CNN
-F 3 "~" H 5850 5650 50  0001 C CNN
-	1    5850 5650
+P 4300 6200
+F 0 "J5" H 4272 6082 50  0000 R CNN
+F 1 "Conn_Pwr_LED" H 4272 6173 50  0000 R CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x02_P2.54mm_Vertical" H 4300 6200 50  0001 C CNN
+F 3 "~" H 4300 6200 50  0001 C CNN
+	1    4300 6200
 	-1   0    0    1   
 $EndComp
 $Comp
 L power:GND #PWR020
 U 1 1 5CC3F099
-P 5650 5650
-F 0 "#PWR020" H 5650 5400 50  0001 C CNN
-F 1 "GND" H 5655 5477 50  0000 C CNN
-F 2 "" H 5650 5650 50  0001 C CNN
-F 3 "" H 5650 5650 50  0001 C CNN
-	1    5650 5650
+P 4100 6200
+F 0 "#PWR020" H 4100 5950 50  0001 C CNN
+F 1 "GND" H 4105 6027 50  0000 C CNN
+F 2 "" H 4100 6200 50  0001 C CNN
+F 3 "" H 4100 6200 50  0001 C CNN
+	1    4100 6200
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:+5V #PWR019
 U 1 1 5CC40612
-P 5350 5550
-F 0 "#PWR019" H 5350 5400 50  0001 C CNN
-F 1 "+5V" V 5365 5678 50  0000 L CNN
-F 2 "" H 5350 5550 50  0001 C CNN
-F 3 "" H 5350 5550 50  0001 C CNN
-	1    5350 5550
+P 3800 6100
+F 0 "#PWR019" H 3800 5950 50  0001 C CNN
+F 1 "+5V" V 3815 6228 50  0000 L CNN
+F 2 "" H 3800 6100 50  0001 C CNN
+F 3 "" H 3800 6100 50  0001 C CNN
+	1    3800 6100
 	0    -1   -1   0   
 $EndComp
 Text Label 2250 1200 0    50   ~ 0
@@ -703,7 +703,7 @@ F 3 "" H 1750 2700 50  0001 C CNN
 $EndComp
 Text Label 1250 1300 2    50   ~ 0
 DETECTOR_SIGNAL
-Text Label 8000 5700 0    50   ~ 0
+Text Label 6250 5700 0    50   ~ 0
 DETECTOR_SIGNAL
 Text Label 1500 5650 2    50   ~ 0
 LV_FanPowerDemand
@@ -934,28 +934,28 @@ $EndComp
 $Comp
 L Device:R R7
 U 1 1 5D12B6A3
-P 7750 5550
-F 0 "R7" H 7820 5596 50  0000 L CNN
-F 1 "10R" H 7820 5505 50  0000 L CNN
-F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 7680 5550 50  0001 C CNN
-F 3 "~" H 7750 5550 50  0001 C CNN
-	1    7750 5550
+P 6000 5550
+F 0 "R7" H 6070 5596 50  0000 L CNN
+F 1 "10R" H 6070 5505 50  0000 L CNN
+F 2 "Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P10.16mm_Horizontal" V 5930 5550 50  0001 C CNN
+F 3 "~" H 6000 5550 50  0001 C CNN
+	1    6000 5550
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:GND #PWR0106
 U 1 1 5D12C90D
-P 7750 5400
-F 0 "#PWR0106" H 7750 5150 50  0001 C CNN
-F 1 "GND" H 7755 5227 50  0000 C CNN
-F 2 "" H 7750 5400 50  0001 C CNN
-F 3 "" H 7750 5400 50  0001 C CNN
-	1    7750 5400
+P 6000 5400
+F 0 "#PWR0106" H 6000 5150 50  0001 C CNN
+F 1 "GND" H 6005 5227 50  0000 C CNN
+F 2 "" H 6000 5400 50  0001 C CNN
+F 3 "" H 6000 5400 50  0001 C CNN
+	1    6000 5400
 	-1   0    0    1   
 $EndComp
 Wire Wire Line
-	7750 5700 8000 5700
-Connection ~ 7750 5700
+	6000 5700 6250 5700
+Connection ~ 6000 5700
 Wire Wire Line
 	6500 3950 6850 3950
 Connection ~ 6500 3950
@@ -964,4 +964,6 @@ Wire Wire Line
 Connection ~ 6500 2650
 Text Notes 3700 3400 3    50   ~ 0
 G Y O R B
+Text Notes 7000 6450 0    50   ~ 0
+Arduino 3d printer cut off program\nCopyright (C) 2019 Christopher Speck\n\nThis program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>.
 $EndSCHEMATC

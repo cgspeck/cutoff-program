@@ -2,7 +2,7 @@
 
   (general
     (thickness 1.6)
-    (drawings 4)
+    (drawings 5)
     (tracks 274)
     (zones 0)
     (modules 26)
@@ -1292,6 +1292,9 @@
       (net 16 /LV_FanPowerDemand) (solder_mask_margin 0.1016))
   )
 
+  (gr_text "Arduino 3d printer cut off program\nCopyright (C) 2019 Christopher Speck\n\nThis program is free software: you can redistribute it and/or modify\nit under the terms of the GNU General Public License as published by\nthe Free Software Foundation, either version 3 of the License, or\n(at your option) any later version.\n\nThis program is distributed in the hope that it will be useful,\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\nGNU General Public License for more details.\n\nYou should have received a copy of the GNU General Public License\nalong with this program.  If not, see <https://www.gnu.org/licenses/>." (at 79.8068 54.229) (layer F.Cu)
+    (effects (font (size 1.5 1.5) (thickness 0.3)))
+  )
   (gr_line (start 22.9108 159.9692) (end 22.9108 76.1746) (layer Edge.Cuts) (width 0.05))
   (gr_line (start 149.7584 159.9692) (end 22.9108 159.9692) (layer Edge.Cuts) (width 0.05))
   (gr_line (start 149.7584 76.1746) (end 149.7584 159.9692) (layer Edge.Cuts) (width 0.05))

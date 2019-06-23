@@ -1,7 +1,7 @@
 (export (version D)
   (design
     (source /home/chris/src/cutoff-program/interface-circuit/design/design.sch)
-    (date "Sun 23 Jun 2019 12:46:05 AEST")
+    (date "Sun 23 Jun 2019 13:45:02 AEST")
     (tool "Eeschema 5.1.2-f72e74a~84~ubuntu18.04.1")
     (sheet (number 1) (name /) (tstamps /)
       (title_block
