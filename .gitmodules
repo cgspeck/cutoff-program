@@ -1,0 +1,6 @@
+[submodule "interface-circuit/vendor/digikey-kicad-library"]
+	path = interface-circuit/vendor/digikey-kicad-library
+	url = git@github.com:Digi-Key/digikey-kicad-library.git
+[submodule "interface-circuit/SparkFun-KiCad-Libraries"]
+	path = interface-circuit/SparkFun-KiCad-Libraries
+	url = git@github.com:sparkfun/SparkFun-KiCad-Libraries.git
