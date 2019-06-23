@@ -88,11 +88,11 @@ NoConn ~ 2300 6350
 NoConn ~ 2400 6350
 NoConn ~ 2500 6350
 NoConn ~ 2600 6350
-Text Label 3700 3850 0    50   ~ 0
+Text Label 3700 3650 0    50   ~ 0
 LV_PrinterPowerStatus
 Text Label 3700 3550 0    50   ~ 0
 LV_FanPowerDemand
-Text Label 3700 3650 0    50   ~ 0
+Text Label 3700 3850 0    50   ~ 0
 LV_AlarmTriggered
 $Comp
 L power:GND #PWR013
@@ -591,19 +591,19 @@ $EndComp
 $Comp
 L Connector:Conn_01x03_Male J7
 U 1 1 5CCAE331
-P 6450 3300
-F 0 "J7" H 6422 3232 50  0000 R CNN
-F 1 "Conn_Printer_Mode" H 6422 3323 50  0000 R CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 6450 3300 50  0001 C CNN
-F 3 "~" H 6450 3300 50  0001 C CNN
-	1    6450 3300
+P 6300 2550
+F 0 "J7" H 6272 2482 50  0000 R CNN
+F 1 "Conn_Printer_Mode" H 6272 2573 50  0000 R CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 6300 2550 50  0001 C CNN
+F 3 "~" H 6300 2550 50  0001 C CNN
+	1    6300 2550
 	1    0    0    -1  
 $EndComp
-Text Label 6650 3200 0    50   ~ 0
+Text Label 6500 2450 0    50   ~ 0
 HV_PrinterPowerDemand
 Text Label 8100 3050 1    50   ~ 0
 D7_PRINTER_RELAY
-Text Label 6600 3650 0    50   ~ 0
+Text Label 6500 3750 0    50   ~ 0
 HV_FanPowerDemand
 $Comp
 L Connector:Screw_Terminal_01x02 J4
@@ -845,39 +845,39 @@ $EndComp
 $Comp
 L Connector:Conn_01x03_Male J8
 U 1 1 5CCBFC14
-P 6400 3750
-F 0 "J8" H 6372 3682 50  0000 R CNN
-F 1 "Conn_Fan_Mode" H 6372 3773 50  0000 R CNN
-F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 6400 3750 50  0001 C CNN
-F 3 "~" H 6400 3750 50  0001 C CNN
-	1    6400 3750
+P 6300 3850
+F 0 "J8" H 6272 3782 50  0000 R CNN
+F 1 "Conn_Fan_Mode" H 6272 3873 50  0000 R CNN
+F 2 "Connector_PinHeader_2.54mm:PinHeader_1x03_P2.54mm_Vertical" H 6300 3850 50  0001 C CNN
+F 3 "~" H 6300 3850 50  0001 C CNN
+	1    6300 3850
 	1    0    0    -1  
 $EndComp
 $Comp
 L power:+5V #PWR0102
 U 1 1 5CC5D628
-P 6600 3750
-F 0 "#PWR0102" H 6600 3600 50  0001 C CNN
-F 1 "+5V" V 6615 3878 50  0000 L CNN
-F 2 "" H 6600 3750 50  0001 C CNN
-F 3 "" H 6600 3750 50  0001 C CNN
-	1    6600 3750
+P 6500 3850
+F 0 "#PWR0102" H 6500 3700 50  0001 C CNN
+F 1 "+5V" V 6515 3978 50  0000 L CNN
+F 2 "" H 6500 3850 50  0001 C CNN
+F 3 "" H 6500 3850 50  0001 C CNN
+	1    6500 3850
 	0    1    1    0   
 $EndComp
 $Comp
 L power:+5V #PWR0103
 U 1 1 5CC658C6
-P 6650 3300
-F 0 "#PWR0103" H 6650 3150 50  0001 C CNN
-F 1 "+5V" V 6665 3428 50  0000 L CNN
-F 2 "" H 6650 3300 50  0001 C CNN
-F 3 "" H 6650 3300 50  0001 C CNN
-	1    6650 3300
+P 6500 2550
+F 0 "#PWR0103" H 6500 2400 50  0001 C CNN
+F 1 "+5V" V 6515 2678 50  0000 L CNN
+F 2 "" H 6500 2550 50  0001 C CNN
+F 3 "" H 6500 2550 50  0001 C CNN
+	1    6500 2550
 	0    1    1    0   
 $EndComp
-Text Label 6600 3850 0    50   ~ 0
+Text Label 6500 3950 0    50   ~ 0
 SW_FAN_RELAY
-Text Label 6650 3400 0    50   ~ 0
+Text Label 6500 2650 0    50   ~ 0
 SW_PRINTER_RELAY
 Text Label 2250 1800 0    50   ~ 0
 SW_PRINTER_RELAY
@@ -887,4 +887,48 @@ D7_PRINTER_RELAY
 NoConn ~ 1250 1800
 Text Label 1250 1900 2    50   ~ 0
 D8_FAN_RELAY
+$Comp
+L Device:R R?
+U 1 1 5D10E052
+P 6500 2800
+F 0 "R?" H 6570 2846 50  0000 L CNN
+F 1 "10R" H 6570 2755 50  0000 L CNN
+F 2 "" V 6430 2800 50  0001 C CNN
+F 3 "~" H 6500 2800 50  0001 C CNN
+	1    6500 2800
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5D10F091
+P 6500 2950
+F 0 "#PWR?" H 6500 2700 50  0001 C CNN
+F 1 "GND" H 6505 2777 50  0000 C CNN
+F 2 "" H 6500 2950 50  0001 C CNN
+F 3 "" H 6500 2950 50  0001 C CNN
+	1    6500 2950
+	1    0    0    -1  
+$EndComp
+$Comp
+L Device:R R?
+U 1 1 5D114FFA
+P 6500 4100
+F 0 "R?" H 6570 4146 50  0000 L CNN
+F 1 "10R" H 6570 4055 50  0000 L CNN
+F 2 "" V 6430 4100 50  0001 C CNN
+F 3 "~" H 6500 4100 50  0001 C CNN
+	1    6500 4100
+	1    0    0    -1  
+$EndComp
+$Comp
+L power:GND #PWR?
+U 1 1 5D115C1F
+P 6500 4250
+F 0 "#PWR?" H 6500 4000 50  0001 C CNN
+F 1 "GND" H 6505 4077 50  0000 C CNN
+F 2 "" H 6500 4250 50  0001 C CNN
+F 3 "" H 6500 4250 50  0001 C CNN
+	1    6500 4250
+	1    0    0    -1  
+$EndComp
 $EndSCHEMATC
