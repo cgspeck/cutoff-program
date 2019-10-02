@@ -45,7 +45,6 @@ This pin is reserved for a future use.
 
 #define FLASH_INTERVAL 500
 #define STARTUP_INTERVAL 4000
-#define INPUT_SCAN_INTERVAL 10
 
 #define SERIAL_REPORT_INTERVAL 1000
 // globals
@@ -61,7 +60,6 @@ bool actualPrinterPwrState = false;
 bool actualFanPwrState = false;
 
 unsigned long previousFlashMillis = 0;
-unsigned long previousInputScanMillis = 0;
 unsigned long previousSerialReportMillis = 0;
 
 // function prototypes
@@ -151,11 +149,6 @@ void loop()
   {
     digitalWrite(PIN_OUT_ALERT, LOW);
     firstCheck = false;
-  }
-
-  if ((unsigned long)(currentMillis - previousInputScanMillis) >= (int)INPUT_SCAN_INTERVAL)
-  {
-    previousInputScanMillis = currentMillis;
   }
 
   if (digitalRead(PIN_IN_DETECTOR_SIGNAL) == LOW)
