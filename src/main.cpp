@@ -47,6 +47,10 @@ This pin is reserved for a future use.
 #define STARTUP_INTERVAL 4000
 
 #define SERIAL_REPORT_INTERVAL 1000
+
+// alarm has to be on for this much time before power will be cut
+#define TRIGGER_DELAY 1500
+
 // globals
 bool startingUp = true;
 bool firstCheck = true;
@@ -61,6 +65,9 @@ bool actualFanPwrState = false;
 
 unsigned long previousFlashMillis = 0;
 unsigned long previousSerialReportMillis = 0;
+
+bool inIncident = false;
+unsigned long incidentStart = 0;
 
 // function prototypes
 void setupOutputPin(int pinNumber, int initialState = LOW);
@@ -153,15 +160,21 @@ void loop()
 
   if (digitalRead(PIN_IN_DETECTOR_SIGNAL) == LOW)
   {
-
-    digitalWrite(PIN_RELAY_PRINTER, LOW);
-    digitalWrite(PIN_RELAY_FAN, LOW);
-    digitalWrite(PIN_OUT_ALERT, HIGH);
-    detectorTriggered = true;
-    actualPrinterPwrState = false;
-    actualFanPwrState = false;
-    doSerialReport(currentMillis);
-    return;
+    if (inIncident && ((unsigned long)(currentMillis - incidentStart) >= (int)TRIGGER_DELAY)) {
+      digitalWrite(PIN_RELAY_PRINTER, LOW);
+      digitalWrite(PIN_RELAY_FAN, LOW);
+      digitalWrite(PIN_OUT_ALERT, HIGH);
+      detectorTriggered = true;
+      actualPrinterPwrState = false;
+      actualFanPwrState = false;
+      doSerialReport(currentMillis);
+      return;
+    } else {
+      inIncident = true;
+      incidentStart = currentMillis;
+    }
+  } else {
+    inIncident = false;
   }
 
   bool piPrinterPwrDemand = (digitalRead(PIN_IN_PI_PWR_DEMAND_PRINTER) == LOW);
