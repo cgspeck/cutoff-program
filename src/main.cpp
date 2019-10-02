@@ -44,7 +44,7 @@ This pin is reserved for a future use.
 #define PIN_RELAY_FAN 8
 
 #define FLASH_INTERVAL 500
-#define STARTUP_INTERVAL 4000
+#define STARTUP_INTERVAL 3000
 
 #define SERIAL_REPORT_INTERVAL 1000
 
