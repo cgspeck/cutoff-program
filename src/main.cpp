@@ -69,6 +69,12 @@ unsigned long previousSerialReportMillis = 0;
 bool inIncident = false;
 unsigned long incidentStart = 0;
 
+// allow alarm to be truned off remotely by
+// cycling the power demand pin alertAckCount times
+bool alertLastObs = false;
+int alertObsCount = 0;
+int alertAckCount = 2;
+
 // function prototypes
 void setupOutputPin(int pinNumber, int initialState = LOW);
 
@@ -146,9 +152,24 @@ void loop()
     return;
   }
 
+  bool piPrinterPwrDemand = (digitalRead(PIN_IN_PI_PWR_DEMAND_PRINTER) == LOW);
+
   if (detectorTriggered)
   {
     doSerialReport(currentMillis);
+    //
+    // check if the incident has been acknowledged by the power demand
+    // being cycled by alertAckCount
+    //
+    if (alertLastObs==false && piPrinterPwrDemand) {
+      alertObsCount ++;
+    }
+    if (alertLastObs==true && ! piPrinterPwrDemand) {
+      if (alertObsCount >= alertAckCount) {
+        digitalWrite(PIN_OUT_ALERT, LOW);
+      }
+    }
+    alertLastObs=piPrinterPwrDemand;
     return;
   }
 
@@ -176,8 +197,6 @@ void loop()
   } else {
     inIncident = false;
   }
-
-  bool piPrinterPwrDemand = (digitalRead(PIN_IN_PI_PWR_DEMAND_PRINTER) == LOW);
 
   if (piPrinterPwrDemand != previousPiPrinterPwrDemand)
   {
