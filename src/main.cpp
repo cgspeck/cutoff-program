@@ -49,7 +49,7 @@ This pin is reserved for a future use.
 #define SERIAL_REPORT_INTERVAL 1000
 
 // alarm has to be on for this much time before power will be cut
-#define TRIGGER_DELAY 1500
+#define TRIGGER_DELAY 2000
 
 // globals
 bool startingUp = true;
