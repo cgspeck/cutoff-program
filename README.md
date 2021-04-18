@@ -5,6 +5,7 @@ This allows a Raspberry Pi running [OctoPrint](https://octoprint.org/) and the [
 There is a connection for a [12V network smoke detector](https://www.aliexpress.com/item/32850855553.html?spm=a2g0s.9042311.0.0.27424c4dtptgRe). The smoke detector must be connected, and in a good state, for the power to turn on.
 
 ---
+
 **WARNING AND DISCLAIMER**
 
 There is no guarantee whatsoever that this unit will function as intended and there is no responsibility on my part.
@@ -21,38 +22,38 @@ When power is first connected a startup phase runs for four seconds, during whic
 
 After startup, a two-way centre-off toggle switch determines whether the printer:
 
-* is powered on by manual demand (up)
-* is off (center)
-* is powered on demand by a connected Raspberry Pi (down)
+- is powered on by manual demand (up)
+- is off (center)
+- is powered on demand by a connected Raspberry Pi (down)
 
 A second toggle switch determines whether the extraction fan:
 
-* is powered on demand by a connected Raspberry Pi (up)
-* is off (center)
-* is slaved to the printer's power status (down)
+- is powered on demand by a connected Raspberry Pi (up)
+- is off (center)
+- is slaved to the printer's power status (down)
 
 The extraction fan will be powered unless the printer is powered.
 
 If the smoke detector is triggered, or gets disconnected:
 
-* power to the printer is cut off
-* power to the extraction fan is cut off
-* the buzzer is sounded constantly
-* an alert signal is sent to the Raspberry Pi
+- power to the printer is cut off
+- power to the extraction fan is cut off
+- the buzzer is sounded constantly
+- an alert signal is sent to the Raspberry Pi
 
 The only way to recover the system once triggered is via the reset button.
 
-You should supply power to the power control system, Pi, printer, extraction fan and all via  Saftey Switch/RCBO/GFCI breaker in order to protect yourself and also render the system incapable of automatically starting up in the event of loss, and resumption, of mains electrical supply/
+You should supply power to the power control system, Pi, printer, extraction fan and all via Saftey Switch/RCBO/GFCI breaker in order to protect yourself and also render the system incapable of automatically starting up in the event of loss, and resumption, of mains electrical supply/
 
 ## Development
 
 ### Development Prerequisites
 
-* [Arduino IDE >= 1.8.4](https://www.arduino.cc/en/Main/Software)
+- [Arduino IDE >= 1.8.4](https://www.arduino.cc/en/Main/Software)
 
-* [Arduino-Makefile](https://github.com/sudar/Arduino-Makefile)
+- [Arduino-Makefile](https://github.com/sudar/Arduino-Makefile)
 
-* [direnv](https://direnv.net/) for managing arduino & avr library and tool locations if the defaults don't work
+- [direnv](https://direnv.net/) for managing arduino & avr library and tool locations if the defaults don't work
 
 The version of Arduino in the Ubuntu repository is ancient and will not work. Consider using `scripts/install-deps.sh` which uses [umake](https://github.com/ubuntu/ubuntu-make) to install up to date Arduino environment.
 
@@ -78,6 +79,16 @@ export AVRDUDE=/Applications/Arduino.app/Contents/Java/hardware/tools/avr/bin/av
 export AVRDUDE_CONF=/Applications/Arduino.app/Contents/Java/hardware/tools/avr/etc/avrdude.conf
 ```
 
+### As-built Pins
+
+| RPI (GPIO/BCM) | Interface Circuit                                                |
+| -------------- | ---------------------------------------------------------------- |
+| 26 (brown)     | Fan Power (inverted, low = on, only works if printer is powered) |
+| 23 (green)     | Printer Power (inverted, low = on)                               |
+| 24 (yellow)    | alarm state?                                                     |
+| GND (orange)   | GND                                                              |
+| 25 (red)       | Printer State (high = on)                                        |
+
 ## License
 
 Arduino 3d printer cut off program
@@ -90,8 +101,8 @@ the Free Software Foundation, either version 3 of the License, or
 
 This program is distributed in the hope that it will be useful,
 but WITHOUT ANY WARRANTY; without even the implied warranty of
-MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
 GNU General Public License for more details.
 
 You should have received a copy of the GNU General Public License
-along with this program.  If not, see <https://www.gnu.org/licenses/>.
+along with this program. If not, see <https://www.gnu.org/licenses/>.
